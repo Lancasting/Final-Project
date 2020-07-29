@@ -1,10 +1,11 @@
+//Dependencies
 const express = require("express");
-const compression = require("compression");
-const mongoose = require("mongoose");
-require("dotenv").config()
-const path = require("path");
-const PORT = process.env.PORT || 3001;
-const app = express();
+const compression = require("compression");//Performance
+const mongoose = require("mongoose");//Database
+require("dotenv").config()//.env use
+const path = require("path");//Grab Paths
+const PORT = process.env.PORT || 3001;//Port#
+const app = express();//Server
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

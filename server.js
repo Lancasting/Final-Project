@@ -1,4 +1,5 @@
 const express = require("express");
+const compression = require("compression");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -7,6 +8,8 @@ const app = express();
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+app.use(compression());
 
 // Send every request to the React app
 // Define any API routes before this runs

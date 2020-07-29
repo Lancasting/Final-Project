@@ -1,6 +1,7 @@
 const express = require("express");
 const compression = require("compression");
 const mongoose = require("mongoose");
+require("dotenv").config()
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -23,10 +24,10 @@ app.use(compression());
 
 //Add future routes here
 /**
- * 
+ * app.use(Routes)
  */
 
- 
+
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function(req, res) {

@@ -5,6 +5,7 @@ function Welcome() {
   return (
     <Helmet>
       <title>HALP - Welcome</title>
+      <meta name="description" content="Welcome Page of the HALP website" />
     </Helmet>
   );
 }

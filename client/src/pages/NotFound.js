@@ -5,6 +5,7 @@ function NotFound() {
   return (
     <Helmet>
       <title>HALP - Page Not Found</title>
+      <meta name="description" content="Not Found Page of the HALP website" />
     </Helmet>
   );
 }

@@ -5,6 +5,7 @@ function Signup() {
   return (
     <Helmet>
       <title>HALP - Signup</title>
+      <meta name="description" content="Signup Page for the HALP website" />
     </Helmet>
   );
 }

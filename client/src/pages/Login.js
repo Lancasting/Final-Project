@@ -5,6 +5,7 @@ function Login() {
   return (
     <Helmet>
       <title>HALP - Login Page</title>
+      <meta name="description" content="Login Page Of The HALP Website" />
     </Helmet>
   );
 }

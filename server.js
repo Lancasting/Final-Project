@@ -1,13 +1,13 @@
 //Dependencies
 const express = require("express");
 const session = require("express-session");
-const compression = require("compression");//Performance
-const mongoose = require("mongoose");//Database
+const compression = require("compression"); //Performance
+const mongoose = require("mongoose"); //Database
 const passport = require("./config/passport.js");
-require("dotenv").config()//.env use
-const path = require("path");//Grab Paths
-const PORT = process.env.PORT || 3001;//Port#
-const app = express();//Server
+require("dotenv").config(); //.env use
+const path = require("path"); //Grab Paths
+const PORT = process.env.PORT || 3001; //Port#
+const app = express(); //Server
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -15,12 +15,17 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //Connect To Database
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/ticketing_system", error =>{
-  //Check if connection error
-  if (error) return console.log("Connection Unsuccessful");
-  //Log Successfull connection
-  console.log("Connection Successful");
-});
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/ticketing_system",
+  (error) => {
+    //Check if connection error
+    if (error) {
+      return console.log("Connection Unsuccessful");
+    }
+    //Log Successfull connection
+    console.log("Connection Successful");
+  }
+);
 
 //user compression for performance
 app.use(compression());

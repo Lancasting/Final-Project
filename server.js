@@ -7,11 +7,11 @@ const passport = require("./config/passport.js");
 require("dotenv").config(); //.env use
 const path = require("path"); //Grab Paths
 const PORT = process.env.PORT || 3001; //Port#
-const app = express(); //Server
+const server = express(); //Server
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  server.use(express.static("client/build"));
 }
 
 //Connect To Database
@@ -28,27 +28,32 @@ mongoose.connect(
 );
 
 //user compression for performance
-app.use(compression());
+server.use(compression());
 
 // Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+server.use(express.json());
 
 // We need to use sessions to keep track of our user's login status
-app.use(session({ secret: process.env.SECRET || "secret", resave: true, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
-
+server.use(
+  session({
+    secret: process.env.SECRET || "secret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+server.use(passport.initialize());
+server.use(passport.session());
 
 //Add future routes here
-app.use(require("./routes/userRoutes"));
+server.use(require("./routes/userRoutes"));
 
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", function(req, res) {
+server.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(PORT, function() {
+server.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });

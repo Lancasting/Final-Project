@@ -42,7 +42,7 @@ UserSchema.methods.hashPassword = function () {
  */
 UserSchema.methods.validPassword = function (password) {
   //Use bcrypt to check passwords
-    return bcrypt.compareSync(password, this.password);
+  return bcrypt.compareSync(password, this.password);
 }; //End validPassword()
 
 const User = mongoose.model("User", UserSchema);

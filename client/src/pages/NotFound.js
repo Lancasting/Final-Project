@@ -1,7 +1,13 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 function NotFound() {
-  return <>Page Not Found</>;
+  return (
+    <Helmet>
+      <title>HALP - Page Not Found</title>
+      <meta name="description" content="Not Found Page of the HALP website" />
+    </Helmet>
+  );
 }
 
 export default NotFound;

@@ -1,11 +1,11 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from "react";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./pages/Login.js";
 import Signup from "./pages/Signup.js";
 import Welcome from "./pages/Welcome.js";
 import NotFound from "./pages/NotFound.js";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {

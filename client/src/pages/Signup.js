@@ -1,6 +1,6 @@
 import React from "react";
 
-function Signup(){
+function Signup() {
   return <>Signup Page</>;
 }
 

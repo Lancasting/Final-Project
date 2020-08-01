@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "production") {
 //Connect To Database
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/ticketing_system", error =>{
   //Check if connection error
-  if(error) return console.log("Connection Unsuccessful");
+  if (error) return console.log("Connection Unsuccessful");
   //Log Successfull connection
   console.log("Connection Successful");
 });

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Button, Form, Grid, Header, Image, Segment } from "semantic-ui-react";
 import API from "../utils/API.js";
@@ -19,13 +20,19 @@ function Signup() {
 
   const formSubmit = (event) => {
     event.preventDefault();
-    console.log(userInformation);
     if (
       userInformation.username &&
       userInformation.email &&
       userInformation.password
     ) {
-      API.signup(userInformation);
+      API.signup(userInformation)
+        .then((results) => {
+          console.log(results.data);
+          return <Redirect to="/user/login" />;
+        })
+        .catch((error) => {
+          console.log(error.data);
+        });
     }
   };
 

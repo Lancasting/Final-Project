@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Button, Form, Grid, Header, Image, Segment } from "semantic-ui-react";
+import API from "../utils/API.js";
 
 function Signup() {
   const [userInformation, setUserInformation] = useState({
@@ -19,6 +20,13 @@ function Signup() {
   const formSubmit = (event) => {
     event.preventDefault();
     console.log(userInformation);
+    if (
+      userInformation.username &&
+      userInformation.email &&
+      userInformation.password
+    ) {
+      API.signup(userInformation);
+    }
   };
 
   return (

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Button, Form, Grid, Header, Image, Segment } from "semantic-ui-react";
 import API from "../utils/API.js";
 
-function Signup() {
+function Signup({setLoggedin}) {
   const [userInformation, setUserInformation] = useState({
     username: null,
     email: null,
@@ -28,7 +28,7 @@ function Signup() {
       API.signup(userInformation)
         .then((results) => {
           console.log(results.data);
-          return <Redirect to="/user/login" />;
+          setLoggedin(true);
         })
         .catch((error) => {
           console.log(error.data);

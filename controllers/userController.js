@@ -7,6 +7,7 @@ module.exports = {
     User.create(newAccount)
       .then((result) => {
         res.json(result);
+        res.redirect("/login");
       })
       .catch((error) => {
         res.json(error);

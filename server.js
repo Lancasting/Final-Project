@@ -47,6 +47,7 @@ server.use(passport.session());
 
 //Add future routes here
 server.use(require("./routes/userRoutes"));
+server.use(require("./routes/htmlRoutes.js"));
 
 // Send every request to the React app
 // Define any API routes before this runs

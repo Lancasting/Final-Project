@@ -20,11 +20,7 @@ function Signup({ setLoggedin }) {
 
   const formSubmit = (event) => {
     event.preventDefault();
-    if (
-      userInformation.username &&
-      userInformation.email &&
-      userInformation.password
-    ) {
+    if (userInformation.email && userInformation.password) {
       API.signup(userInformation)
         .then((results) => {
           console.log(results.data);

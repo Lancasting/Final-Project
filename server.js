@@ -51,9 +51,9 @@ server.use(require("./routes/htmlRoutes.js"));
 
 // Send every request to the React app
 // Define any API routes before this runs
-server.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// server.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 server.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

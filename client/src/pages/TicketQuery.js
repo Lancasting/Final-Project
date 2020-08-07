@@ -1,7 +1,7 @@
 import React from "react";
 
-function UserProfile() {
+function TicketQuery() {
   return <>UserProfile</>;
 }
 
-export default UserProfile;
+export default TicketQuery;

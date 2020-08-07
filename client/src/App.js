@@ -49,7 +49,7 @@ function App() {
             <Signup setLoggedin={setLoggedin} />
           )}
         </Route>
-        <Route exact path="/account">
+        <Route exact path="/tickets">
           {!loggedin ? <Redirect to="/login" /> : <TicketQuery />}
         </Route>
         <Route component={NotFound} />

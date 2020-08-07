@@ -9,6 +9,27 @@ function Login() {
     password: null,
   });
 
+  const formChange = (event) => {
+    setUserInformation({
+      ...userInformation,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const formSubmit = (event) => {
+    event.preventDefault();
+    if (userInformation.email && userInformation.password) {
+      API.signup(userInformation)
+        .then((results) => {
+          console.log(results.data);
+          setLoggedin(true);
+        })
+        .catch((error) => {
+          console.log(error.data);
+        });
+    }
+  };
+
   return (
     <>
       <Helmet>

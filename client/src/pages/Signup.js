@@ -1,12 +1,12 @@
 import React, { useState } from "react";
+import AuthenticationForm from "../components/AuthenticationForm.js";
 // import { Redirect } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { Button, Form, Grid, Header, Image, Segment } from "semantic-ui-react";
+import { Grid, Header, Image } from "semantic-ui-react";
 import API from "../utils/API.js";
 
-function Signup({setLoggedin}) {
+function Signup({ setLoggedin }) {
   const [userInformation, setUserInformation] = useState({
-    username: null,
     email: null,
     password: null,
   });
@@ -51,43 +51,7 @@ function Signup({setLoggedin}) {
           <Header as="h2" color="blue" textAlign="center">
             <Image src="/logo.png" /> Create your account
           </Header>
-          <Form size="large" onSubmit={formSubmit}>
-            <Segment stacked>
-              <Form.Input
-                onChange={formChange}
-                name="username"
-                fluid
-                icon="lock"
-                iconPosition="left"
-                placeholder="Name"
-                type="Name"
-              />
-              <Form.Input
-                onChange={formChange}
-                name="email"
-                fluid
-                icon="user"
-                iconPosition="left"
-                placeholder="Your E-mail address"
-              />
-              <Form.Input
-                onChange={formChange}
-                name="password"
-                fluid
-                icon="lock"
-                iconPosition="left"
-                placeholder="Create Password"
-                type="password"
-              />
-              <Button
-                color="teal"
-                fluid
-                size="large"
-                type="submit"
-                content="Create Account"
-              />
-            </Segment>
-          </Form>
+          <AuthenticationForm formChange={formChange} formSubmit={formSubmit} />
         </Grid.Column>
       </Grid>
     </>

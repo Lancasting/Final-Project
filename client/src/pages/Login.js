@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Button, Form, Grid, Header, Image, Segment } from "semantic-ui-react";
 
 function Login() {
+  const [userInformation, setUserInformation] = useState({
+    username: null,
+    email: null,
+    password: null,
+  });
+
   return (
     <>
       <Helmet>

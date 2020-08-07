@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Login from "./pages/Login.js";
 import Signup from "./pages/Signup.js";
-import UserProfile from "./pages/UserProfile.js";
+import TicketQuery from "./pages/TicketQuery";
 import Welcome from "./pages/Welcome.js";
 import NotFound from "./pages/NotFound.js";
 import API from "./utils/API.js";
@@ -50,7 +50,7 @@ function App() {
           )}
         </Route>
         <Route exact path="/account">
-          {!loggedin ? <Redirect to="/login" /> : <UserProfile />}
+          {!loggedin ? <Redirect to="/login" /> : <TicketQuery />}
         </Route>
         <Route component={NotFound} />
       </Switch>

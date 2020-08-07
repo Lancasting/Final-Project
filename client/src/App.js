@@ -20,9 +20,7 @@ function App() {
   useEffect(() => {
     API.checkUser()
       .then((result) => {
-        console.log(result);
-        if(result.data)
-        {
+        if (result.data) {
           setLoggedin(true);
           return;
         }
@@ -38,10 +36,18 @@ function App() {
       <Switch>
         <Route exact path="/" component={Welcome} />
         <Route exact path="/login">
-          {loggedin ? <Redirect to="/account" /> : <Login setLoggedin={setLoggedin} />}
+          {loggedin ? (
+            <Redirect to="/account" />
+          ) : (
+            <Login setLoggedin={setLoggedin} />
+          )}
         </Route>
         <Route exact path="/signup">
-          {loggedin ? <Redirect to="/account" /> : <Signup setLoggedin={setLoggedin} />}
+          {loggedin ? (
+            <Redirect to="/account" />
+          ) : (
+            <Signup setLoggedin={setLoggedin} />
+          )}
         </Route>
         <Route exact path="/account">
           {!loggedin ? <Redirect to="/login" /> : <UserProfile />}

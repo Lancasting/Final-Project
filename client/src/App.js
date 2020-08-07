@@ -37,14 +37,14 @@ function App() {
         <Route exact path="/" component={Welcome} />
         <Route exact path="/login">
           {loggedin ? (
-            <Redirect to="/account" />
+            <Redirect to="/tickets" />
           ) : (
             <Login setLoggedin={setLoggedin} />
           )}
         </Route>
         <Route exact path="/signup">
           {loggedin ? (
-            <Redirect to="/account" />
+            <Redirect to="/login" />
           ) : (
             <Signup setLoggedin={setLoggedin} />
           )}

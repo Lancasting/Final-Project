@@ -1,7 +1,7 @@
 import React from "react";
 import TicketNavbar from "../components/TicketNavbar.js";
 import { Helmet } from "react-helmet";
-import { Sidebar, Menu, Icon, Header, Image } from "semantic-ui-react";
+import { Sidebar, Menu, Header, Image } from "semantic-ui-react";
 
 function TicketQuery() {
   return (
@@ -21,18 +21,9 @@ function TicketQuery() {
           visible={true}
           width="thin"
         >
-          <Menu.Item as="a">
-            <Icon name="home" />
-            Home
-          </Menu.Item>
-          <Menu.Item as="a">
-            <Icon name="gamepad" />
-            Games
-          </Menu.Item>
-          <Menu.Item as="a">
-            <Icon name="camera" />
-            Channels
-          </Menu.Item>
+          <Menu.Item as="a">Search</Menu.Item>
+          <Menu.Item as="a">Projects</Menu.Item>
+          <Menu.Item as="a">Create</Menu.Item>
         </Sidebar>
         <Sidebar.Pusher>
           <Header as="h3">Application Content</Header>

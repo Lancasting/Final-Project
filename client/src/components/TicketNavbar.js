@@ -4,7 +4,7 @@ import { Segment } from "semantic-ui-react";
 function TicketNavbar() {
   return (
     <>
-      <Segment>NAVBAR</Segment>
+      <Segment style={{ margin: 0 }}>NAVBAR</Segment>
     </>
   );
 }

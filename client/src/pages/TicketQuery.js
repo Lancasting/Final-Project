@@ -1,4 +1,5 @@
 import React from "react";
+import TicketNavbar from "../components/TicketNavbar.js";
 import { Helmet } from "react-helmet";
 import { Sidebar, Menu, Icon, Header, Image } from "semantic-ui-react";
 
@@ -9,6 +10,7 @@ function TicketQuery() {
         <title>HALP - Ticket Page</title>
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
+      <TicketNavbar />
       <Sidebar.Pushable>
         <Sidebar
           as={Menu}

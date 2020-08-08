@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Button, Menu, Image } from "semantic-ui-react";
-import { link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../components/logo.png";
 
 function Welcome() {
@@ -14,13 +14,13 @@ function Welcome() {
       <Menu secondary>
         <Image src={logo} width={100} />
         <Menu.Item position="right">
-          <Button as={link} to="Signup" color="blue">
+          <Button as={Link} to="/signup" color="blue">
             Sign up
           </Button>
         </Menu.Item>
 
         <Menu.Item>
-          <Button as={link} to="Login" color="blue">
+          <Button as={Link} to="/login" color="blue">
             Log-in
           </Button>
         </Menu.Item>

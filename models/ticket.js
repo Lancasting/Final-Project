@@ -8,8 +8,42 @@ const dateObj = {
 };
 
 const TicketSchema = new Schema({
-  createdDate: dateObj,
   updatedDate: dateObj,
+  subject: {
+    type: String,
+    trim: true,
+    validate: [({ length }) => length >= 1, "Please enter a subject"],
+  },
+  createBy: {
+    type: String,
+    trim: true,
+  },
+  updatedBy: {
+    type: String,
+    trim: true,
+  },
+  description: {
+    type: String,
+    trim: true,
+    validate: [
+      ({ length }) => length >= 5,
+      "Please enter a description of your issue",
+    ],
+  },
+  priorityLevel: {
+    type: Number,
+    default: 4,
+  },
+  status: {
+    type: String,
+    default: "New",
+  },
+  type: {
+    type: String,
+  },
+  assignee: {
+    type: String,
+  },
 });
 
 const Ticket = mongoose.model("Ticket", TicketSchema);

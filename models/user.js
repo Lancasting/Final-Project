@@ -11,7 +11,7 @@ const dateObj = {
 const UserSchema = new Schema({
   createdDate: dateObj,
   updatedDate: dateObj,
-  name: {
+  username: {
     type: String,
     trim: true,
     validate: [({ length }) => length >= 1, "Please enter a valid username"],

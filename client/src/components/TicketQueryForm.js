@@ -13,8 +13,13 @@ function TicketQueryForm() {
           />
           <Form.Input
             id="form-subcomponent-shorthand-input-last-name"
-            label=""
-            placeholder="Last name"
+            label="Status"
+            placeholder="New, Hold, Completed"
+          />
+          <Form.Input
+            id="form-subcomponent-shorthand-input-last-name"
+            label="Assigned To"
+            placeholder="Ikemous"
           />
         </Form.Group>
       </Form>

@@ -1,13 +1,37 @@
 import React, { useState } from "react";
+import AuthenticationForm from "../components/AuthenticationForm.js";
+import API from "../utils/API.js";
 import { Helmet } from "react-helmet";
-import { Button, Form, Grid, Header, Image, Segment } from "semantic-ui-react";
+import { Grid, Header, Image } from "semantic-ui-react";
 
-function Login() {
+function Login({ setLoggedin }) {
   const [userInformation, setUserInformation] = useState({
-    username: null,
     email: null,
     password: null,
   });
+
+  const formChange = (event) => {
+    setUserInformation({
+      ...userInformation,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const formSubmit = (event) => {
+    event.preventDefault();
+    if (userInformation.email && userInformation.password) {
+      API.login(userInformation)
+        .then(async (results) => {
+          console.log(results.data);
+          if (!results.errors) {
+            await setLoggedin(true);
+          }
+        })
+        .catch((error) => {
+          console.log(error.data);
+        });
+    }
+  };
 
   return (
     <>
@@ -24,27 +48,7 @@ function Login() {
           <Header as="h2" color="blue" textAlign="center">
             <Image src="/logo.png" /> Login to your account
           </Header>
-          <Form size="large">
-            <Segment stacked>
-              <Form.Input
-                fluid
-                icon="user"
-                iconPosition="left"
-                placeholder="Your E-mail address"
-              />
-              <Form.Input
-                fluid
-                icon="lock"
-                iconPosition="left"
-                placeholder="Enter Password"
-                type="password"
-              />
-
-              <Button color="blue" fluid size="large">
-                Create Account
-              </Button>
-            </Segment>
-          </Form>
+          <AuthenticationForm formChange={formChange} formSubmit={formSubmit} />
         </Grid.Column>
       </Grid>
     </>

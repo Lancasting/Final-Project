@@ -4,6 +4,7 @@ import AuthenticationForm from "../components/AuthenticationForm.js";
 import { Helmet } from "react-helmet";
 import { Grid, Header, Image } from "semantic-ui-react";
 import API from "../utils/API.js";
+import logo from "../components/logo.png";
 
 function Signup({ setLoggedin }) {
   const [userInformation, setUserInformation] = useState({
@@ -45,7 +46,7 @@ function Signup({ setLoggedin }) {
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="blue" textAlign="center">
-            <Image src="/logo.png" /> Create your account
+            <Image src={logo} width={100} />Create your account
           </Header>
           <AuthenticationForm formChange={formChange} formSubmit={formSubmit} />
         </Grid.Column>

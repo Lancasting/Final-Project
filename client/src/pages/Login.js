@@ -21,7 +21,7 @@ function Login() {
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h2" color="blue" textAlign="center">
+          <Header as="h2" color="light blue" textAlign="center">
             <Image src="/logo.png" /> Login to your account
           </Header>
           <Form size="large">

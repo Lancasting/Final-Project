@@ -1,7 +1,7 @@
 import React from "react";
 import TicketNavbar from "../components/TicketNavbar.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
-import TicketSummary from "../components/TicketSummary.js";
+// import TicketSummary from "../components/TicketSummary.js";
 import { Helmet } from "react-helmet";
 import { Sidebar, Menu, Header, Image, List } from "semantic-ui-react";
 

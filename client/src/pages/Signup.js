@@ -48,7 +48,8 @@ function Signup({ setLoggedin }) {
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="blue" textAlign="center">
-            <Image src={logo} width={100} />Create your account
+            <Image src={logo} width={100} />
+            Create your account
           </Header>
           <AuthenticationForm formChange={formChange} formSubmit={formSubmit} />
         </Grid.Column>

@@ -1,5 +1,6 @@
 import React from "react";
 import TicketNavbar from "../components/TicketNavbar.js";
+import TicketQueryForm from "../components/TicketQueryForm.js";
 import { Helmet } from "react-helmet";
 import { Sidebar, Menu, Header, Image } from "semantic-ui-react";
 
@@ -26,6 +27,7 @@ function TicketQuery() {
           <Menu.Item as="a">Create</Menu.Item>
         </Sidebar>
         <Sidebar.Pusher>
+          <TicketQueryForm />
           <Header as="h3">Application Content</Header>
           <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
         </Sidebar.Pusher>

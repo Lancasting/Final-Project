@@ -52,6 +52,7 @@ function App() {
         <Route exact path="/tickets">
           {!loggedin ? <Redirect to="/login" /> : <TicketQuery />}
         </Route>
+        <Route exact path="/devpath" component={TicketQuery} />
         <Route component={NotFound} />
       </Switch>
     </Router>

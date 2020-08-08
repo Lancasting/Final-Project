@@ -1,10 +1,12 @@
 import React from "react";
 import TicketNavbar from "../components/TicketNavbar.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
+import TicketSummary from "../components/TicketSummary.js";
 import { Helmet } from "react-helmet";
-import { Sidebar, Menu, Header, Image } from "semantic-ui-react";
+import { Sidebar, Menu, Header, Image, List } from "semantic-ui-react";
 
 function TicketQuery() {
+  // state of query
   return (
     <>
       <Helmet>
@@ -30,6 +32,11 @@ function TicketQuery() {
           <TicketQueryForm />
           <Header as="h3">Application Content</Header>
           <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
+          <List>
+            {/* Map and render Ticket For Each Item <TicketSummary />
+              array.map(ticket => <TicketSummary />)
+            */}
+          </List>
         </Sidebar.Pusher>
       </Sidebar.Pushable>
     </>

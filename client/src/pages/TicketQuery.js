@@ -17,11 +17,11 @@ function TicketQuery() {
       <Sidebar.Pushable>
         <Sidebar
           as={Menu}
-          animation="push"
+          animation="overlay"
           icon="labeled"
           inverted
           vertical
-          visible={true}
+          visible
           width="thin"
         >
           <Menu.Item as="a">Search</Menu.Item>

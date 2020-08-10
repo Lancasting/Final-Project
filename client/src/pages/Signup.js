@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import NavBar from "../components/NavBar.js";
 import AuthenticationForm from "../components/AuthenticationForm.js";
 // import { Redirect } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Grid, Header, Image } from "semantic-ui-react";
 import API from "../utils/API.js";
 import logo from "../components/logo.png";
+import Navbar from "../components/NavBar.js";
 
 function Signup({ setLoggedin }) {
   const [userInformation, setUserInformation] = useState({
@@ -41,6 +43,7 @@ function Signup({ setLoggedin }) {
         <title>HALP - Login Page</title>
         <meta name="description" content="Login Page Of The HALP Website" />
       </Helmet>
+      <Navbar loggedIn={false} />
       <Grid
         textAlign="center"
         style={{ height: "125vh" }}

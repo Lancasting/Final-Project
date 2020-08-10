@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import TicketNavbar from "../components/TicketNavbar.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
 // import TicketSummary from "../components/TicketSummary.js";
 import { Helmet } from "react-helmet";
-import { Sidebar, Menu, Header, Image, List } from "semantic-ui-react";
+import {
+  Sidebar,
+  Menu,
+  Header,
+  Image,
+  List,
+  Button,
+  Icon,
+} from "semantic-ui-react";
 
 function TicketQuery() {
   // state of query
+  const [visible, setVisible] = useState(false);
+
   return (
     <>
       <Helmet>
@@ -19,9 +29,10 @@ function TicketQuery() {
           as={Menu}
           animation="overlay"
           icon="labeled"
+          onHide={() => setVisible(false)}
           inverted
           vertical
-          visible
+          visible={visible}
           width="thin"
         >
           <Menu.Item as="a">Search</Menu.Item>
@@ -29,6 +40,10 @@ function TicketQuery() {
           <Menu.Item as="a">Create</Menu.Item>
         </Sidebar>
         <Sidebar.Pusher>
+          <Button icon labelPosition="right" onClick={() => setVisible(true)}>
+            Menu
+            <Icon name="right arrow" />
+          </Button>
           <TicketQueryForm />
           <Header as="h3">Application Content</Header>
           <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />

@@ -39,11 +39,11 @@ function TicketQuery() {
           <Menu.Item as="a">Projects</Menu.Item>
           <Menu.Item as="a">Create</Menu.Item>
         </Sidebar>
-        <Sidebar.Pusher>
-          <Button icon labelPosition="right" onClick={() => setVisible(true)}>
+        <Sidebar.Pusher dimmed={visible}>
+          {/* <Button icon labelPosition="right" onClick={() => setVisible(true)} style={{ position: "absolute", zIndex: 1, top: "50%", left: "-6%" }}>
             Menu
             <Icon name="right arrow" />
-          </Button>
+          </Button> */}
           <TicketQueryForm />
           <Header as="h3">Application Content</Header>
           <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />

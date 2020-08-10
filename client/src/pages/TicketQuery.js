@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import logo from "../components/logo.png";
 import TicketNavbar from "../components/TicketNavbar.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
 import Navbar from "../components/NavBar.js";
@@ -18,7 +16,7 @@ function TicketQuery() {
         <title>HALP - Ticket Page</title>
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
-      <Navbar />
+      <Navbar loggedIn={true} />
       <TicketNavbar />
       <Sidebar.Pushable>
         <Sidebar

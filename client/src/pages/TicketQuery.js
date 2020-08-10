@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import API from "../utils/API.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
 import Navbar from "../components/NavBar.js";
-// import TicketSummary from "../components/TicketSummary.js";
+import TicketSummary from "../components/TicketSummary.js";
 import { Helmet } from "react-helmet";
 import {
   Sidebar,
@@ -17,11 +17,13 @@ import {
 function TicketQuery() {
   // state of query
   const [visible, setVisible] = useState(false);
+  const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
     API.getAllTickets()
       .then(({ data }) => {
         console.log(data);
+        setTickets(data);
       })
       .catch((error) => {
         console.log(error);
@@ -62,15 +64,11 @@ function TicketQuery() {
               <Icon name="right arrow" />
             </Button>
           </Sticky>
-          {/* <Button icon labelPosition="right" onClick={() => setVisible(true)} style={{ position: "absolute", zIndex: 1, top: "50%", left: "-6%" }}>
-            Menu
-            <Icon name="right arrow" />
-          </Button> */}
           <TicketQueryForm />
           <List>
-            {/* Map and render Ticket For Each Item <TicketSummary />
-              array.map(ticket => <TicketSummary />)
-            */}
+            {tickets.map((ticket) => (
+              <TicketSummary key={ticket._id} {...ticket} />
+            ))}
           </List>
         </Sidebar.Pusher>
       </Sidebar.Pushable>

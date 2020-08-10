@@ -8,7 +8,7 @@ export default {
     return axios.post("/user/login", userInfo);
   },
   checkUser() {
-    return axios.get("/login");
+    return axios.get("/user/verify");
   },
   getAllTickets() {
     return axios.get("/tickets/all");

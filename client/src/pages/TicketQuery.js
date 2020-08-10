@@ -1,17 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "../components/logo.png";
 import TicketNavbar from "../components/TicketNavbar.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
+import Navbar from "../components/NavBar.js";
 // import TicketSummary from "../components/TicketSummary.js";
 import { Helmet } from "react-helmet";
-import {
-  Sidebar,
-  Menu,
-  Header,
-  Image,
-  List,
-  Button,
-  Icon,
-} from "semantic-ui-react";
+import { Sidebar, Menu, Header, Image, List, Button } from "semantic-ui-react";
 
 function TicketQuery() {
   // state of query
@@ -23,6 +18,7 @@ function TicketQuery() {
         <title>HALP - Ticket Page</title>
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
+      <Navbar />
       <TicketNavbar />
       <Sidebar.Pushable>
         <Sidebar

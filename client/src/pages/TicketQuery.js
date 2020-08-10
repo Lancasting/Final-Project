@@ -3,7 +3,7 @@ import TicketQueryForm from "../components/TicketQueryForm.js";
 import Navbar from "../components/NavBar.js";
 // import TicketSummary from "../components/TicketSummary.js";
 import { Helmet } from "react-helmet";
-import { Sidebar, Menu, Header, Image, List, Button } from "semantic-ui-react";
+import { Sidebar, Menu, Header, Image, List, Button, Sticky, Icon, Rail } from "semantic-ui-react";
 
 function TicketQuery() {
   // state of query
@@ -32,6 +32,12 @@ function TicketQuery() {
           <Menu.Item as="a">Create</Menu.Item>
         </Sidebar>
         <Sidebar.Pusher dimmed={visible}>
+          <Sticky>
+            <Button icon labelPosition="right" onClick={() => setVisible(true)} style={{ zIndex: 1 }}>
+              Menu
+              <Icon name="right arrow" />
+            </Button>
+          </Sticky>
           {/* <Button icon labelPosition="right" onClick={() => setVisible(true)} style={{ position: "absolute", zIndex: 1, top: "50%", left: "-6%" }}>
             Menu
             <Icon name="right arrow" />

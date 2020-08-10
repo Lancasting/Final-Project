@@ -27,33 +27,6 @@ function Navbar({ loggedIn }) {
           </Menu.Item>
         </>
       )}
-      {/* {loggedIn && (
-        <Menu.Item position="right">
-          <Button as={Link} to="/signout" color="red">
-            Sign-Out
-          </Button>
-        </Menu.Item>
-      )}
-      {!loggedIn && (
-        <>
-          <Menu.Item position="right">
-            <Button as={Link} to="/signup" color="blue">
-              Sign up
-            </Button>
-          </Menu.Item>
-          <Menu.Item>
-            <Button as={Link} to="/login" color="blue">
-              Log-in
-            </Button>
-          </Menu.Item>
-        </>
-      )} */}
-
-      {/* <Menu.Item>
-        <Button as={Link} to="/login" color="blue">
-          Log-in
-        </Button>
-      </Menu.Item> */}
     </Menu>
   );
 }

@@ -1,5 +1,6 @@
 const router = require("express").Router();
+const ticketController = require("../controllers/ticketController.js");
 
-router.get();
+router.route("/tickets/all").get(ticketController.getAll);
 
 module.exports = router;

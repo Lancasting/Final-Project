@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TicketNavbar from "../components/TicketNavbar.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
 import Navbar from "../components/NavBar.js";
 // import TicketSummary from "../components/TicketSummary.js";

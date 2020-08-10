@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import API from "../utils/API.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
 import Navbar from "../components/NavBar.js";
 // import TicketSummary from "../components/TicketSummary.js";
@@ -6,8 +7,6 @@ import { Helmet } from "react-helmet";
 import {
   Sidebar,
   Menu,
-  Header,
-  Image,
   List,
   Button,
   Sticky,
@@ -18,6 +17,16 @@ import {
 function TicketQuery() {
   // state of query
   const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    API.getAllTickets()
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <>
@@ -58,8 +67,6 @@ function TicketQuery() {
             <Icon name="right arrow" />
           </Button> */}
           <TicketQueryForm />
-          <Header as="h3">Application Content</Header>
-          <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
           <List>
             {/* Map and render Ticket For Each Item <TicketSummary />
               array.map(ticket => <TicketSummary />)

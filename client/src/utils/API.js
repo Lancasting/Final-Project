@@ -10,4 +10,7 @@ export default {
   checkUser() {
     return axios.get("/login");
   },
+  getAllTickets() {
+    return axios.get("/tickets/all");
+  },
 };

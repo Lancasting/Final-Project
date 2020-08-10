@@ -17,7 +17,6 @@ function TicketQuery() {
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
       <Navbar loggedIn={true} />
-      <TicketNavbar />
       <Sidebar.Pushable>
         <Sidebar
           as={Menu}

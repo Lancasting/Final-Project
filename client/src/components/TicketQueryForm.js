@@ -1,7 +1,8 @@
 import React from "react";
-import { Form, Dropdown, Input } from "semantic-ui-react";
+import { Form, Dropdown, Segment, Input } from "semantic-ui-react";
 
 const options = [
+  { key: 0, text: "", value: "" },
   { key: 1, text: "Status", value: "status" },
   { key: 2, text: "Ticket Number", value: "ticketNumber" },
   { key: 3, text: "Assignee", value: "assignee" },
@@ -14,27 +15,23 @@ const options = [
 
 function TicketQueryForm() {
   return (
-    <>
+    <Segment>
       <Form>
-        <Form.Group>
-          <Input
-            action={
-              <Dropdown
-                button
-                basic
-                floating
-                placeholder="Select Search"
-                options={options}
-                defaultValue="page"
-              />
-            }
-            icon="search"
-            iconPosition="left"
-            placeholder="Search..."
-          />
+        <Form.Group inline>
+          <Form.Field>
+            <Dropdown
+              placeholder="Select Filter"
+              search
+              selection
+              options={options}
+            />
+          </Form.Field>
+          <Form.Field>
+            <Input action={{ icon: "search" }} placeholder="Search..." />
+          </Form.Field>
         </Form.Group>
       </Form>
-    </>
+    </Segment>
   );
 }
 

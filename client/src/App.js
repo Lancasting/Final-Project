@@ -11,7 +11,6 @@ import TicketQuery from "./pages/TicketQuery";
 import Welcome from "./pages/Welcome.js";
 import NotFound from "./pages/NotFound.js";
 import API from "./utils/API.js";
-// import logo from "./logo.svg";
 import "./App.css";
 
 function App() {

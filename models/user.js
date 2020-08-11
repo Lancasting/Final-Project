@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-
+const ticketSchema = require("./ticket");
 const Schema = mongoose.Schema;
 
 const dateObj = {
@@ -27,6 +27,7 @@ const UserSchema = new Schema({
     trim: true,
     validate: [({ length }) => length >= 6, "Password should be longer."],
   },
+  children: [ticketSchema],
 });
 
 /**

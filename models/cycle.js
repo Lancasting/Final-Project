@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const ticketSchema = require("./ticket");
 const dateObj = {
   type: Date,
   default: Date.now(),
@@ -11,8 +10,7 @@ const CycleSchema = new Schema({
   cycles: {
     type: String,
   },
-  children: [ticketSchema],
 });
 
-const Cycle = mongoose.model("Project", CycleSchema);
+const Cycle = mongoose.model("Cycle", CycleSchema);
 module.exports = Cycle;

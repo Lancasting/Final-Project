@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const userSchema = require("./user");
 const Schema = mongoose.Schema;
 
 const dateObj = {
@@ -44,7 +43,6 @@ const TicketSchema = new Schema({
   assignee: {
     type: String,
   },
-  children: [userSchema],
 });
 
 const Ticket = mongoose.model("Ticket", TicketSchema);

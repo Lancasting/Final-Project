@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import API from "../utils/API.js";
 import SideBar from "../components/SideBar.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
-import Navbar from "../components/NavBar.js";
 import TicketSummary from "../components/TicketSummary.js";
 import { Helmet } from "react-helmet";
-import { List, Button, Icon } from "semantic-ui-react";
+import { List } from "semantic-ui-react";
 
 function TicketQuery() {
   // state of query\
@@ -31,7 +30,6 @@ function TicketQuery() {
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
       <SideBar>
-        <Navbar loggedIn={true} />
         <TicketQueryForm />
         <List>
           {tickets.map((ticket) => (

@@ -9,6 +9,7 @@ import Login from "./pages/Login.js";
 import Signup from "./pages/Signup.js";
 import TicketQuery from "./pages/TicketQuery";
 import Welcome from "./pages/Welcome.js";
+import Ticket from "./pages/ticket.js";
 import NotFound from "./pages/NotFound.js";
 import API from "./utils/API.js";
 import "./App.css";
@@ -51,6 +52,10 @@ function App() {
         <Route exact path="/tickets">
           {!loggedin ? <Redirect to="/login" /> : <TicketQuery />}
         </Route>
+        <Route exact path="/tickets/:id">
+          {!loggedin ? <Redirect to="/login" /> : <Ticket />}
+        </Route>
+        <Route exact path="/devpathid/:id" component={Ticket} />
         {/* Take this out before finishing */}
         <Route exact path="/devpath" component={TicketQuery} />
         <Route component={NotFound} />

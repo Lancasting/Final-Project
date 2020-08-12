@@ -2,14 +2,14 @@ import React from "react";
 import { List, Grid, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-function TicketSummary({ _id, priorityLevel, createBy, status }) {
+function TicketSummary({ _id, priorityLevel, createdBy, status }) {
   return (
     <>
       <List.Item style={{ color: "black", padding: "10px" }}>
         <Grid as={Segment} style={{ marginTop: 0, marginBottom: 0 }}>
           <Grid.Column mobile={16} tablet={8} computer={4}>
             <p style={{ fontWeight: "bolder" }}>Ticket Number</p>
-            <Link to={`/tickets/:${_id}`}>{_id}</Link>
+            <Link to={`/tickets/${_id}`}>{_id}</Link>
           </Grid.Column>
           <Grid.Column mobile={16} tablet={8} computer={4}>
             <p style={{ fontWeight: "bolder" }}>Priority</p>
@@ -21,7 +21,7 @@ function TicketSummary({ _id, priorityLevel, createBy, status }) {
           </Grid.Column>
           <Grid.Column mobile={16} tablet={8} computer={4}>
             <p style={{ fontWeight: "bolder" }}>Created By</p>
-            <p>{createBy}</p>
+            <p>{createdBy.email}</p>
           </Grid.Column>
         </Grid>
       </List.Item>

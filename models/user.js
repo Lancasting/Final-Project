@@ -26,6 +26,12 @@ const UserSchema = new Schema({
     trim: true,
     validate: [({ length }) => length >= 6, "Password should be longer."],
   },
+  projects: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Project",
+    },
+  ],
 });
 
 /**

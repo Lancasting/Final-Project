@@ -8,27 +8,27 @@ mongoose.connect(
 const ticketsSeed = [
   {
     subject: "Help Desk",
-    createBy: "Ikemous",
-    updatedBy: "Ikemous",
+    createdBy: mongoose.Types.ObjectId("5f334be61c0a73248435e514"),
+    updatedBy: mongoose.Types.ObjectId("5f334be61c0a73248435e514"),
     description: "Help! My Computer Is Broke!",
     type: "Computer",
-    assignee: "Ikemous",
+    // assignees: ["ObjectId('5f333c5bcab34601840232fa')"],
   },
   {
     subject: "Network",
-    createBy: "Sam",
-    updatedBy: "Sam",
+    createdBy: mongoose.Types.ObjectId("5f334be61c0a73248435e514"),
+    updatedBy: mongoose.Types.ObjectId("5f334be61c0a73248435e514"),
     description: "Help! My Internet Is Broke!",
     type: "Network",
-    assignee: "Sam",
+    // assignees: ["ObjectId('5f333c5bcab34601840232fa')"],
   },
   {
     subject: "Software",
-    createBy: "Martin",
-    updatedBy: "Martin",
+    createdBy: mongoose.Types.ObjectId("5f334be61c0a73248435e514"),
+    updatedBy: mongoose.Types.ObjectId("5f334be61c0a73248435e514"),
     description: "Help! My Software Is Broke!",
     type: "Software",
-    assignee: "Martin",
+    // assignees: ["ObjectId('5f333c5bcab34601840232fa')"],
   },
 ];
 

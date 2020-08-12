@@ -18,6 +18,7 @@ function TicketQuery() {
   // state of query
   const [visible, setVisible] = useState(false);
   const [tickets, setTickets] = useState([]);
+  const [query, setQuery] = useState("all");
 
   useEffect(() => {
     API.getAllTickets()
@@ -28,7 +29,7 @@ function TicketQuery() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [query]);
 
   return (
     <>

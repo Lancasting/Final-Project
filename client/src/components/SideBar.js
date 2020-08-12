@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Sidebar, Menu } from "semantic-ui-react";
+import NavBar from "../components/NavBar.js";
+import { Sidebar, Menu, Button } from "semantic-ui-react";
 
 function SideBar({ children }) {
   const [visible, setVisible] = useState(false);
@@ -20,7 +21,11 @@ function SideBar({ children }) {
         <Menu.Item as="a">Projects</Menu.Item>
         <Menu.Item as="a">Create</Menu.Item>
       </Sidebar>
-      <Sidebar.Pusher dimmed={visible}>{children}</Sidebar.Pusher>
+      <Sidebar.Pusher dimmed={visible}>
+        <NavBar loggedIn={true} />
+        <Button onClick={() => setVisible(true)} />
+        {children}
+      </Sidebar.Pusher>
     </Sidebar.Pushable>
   );
 }

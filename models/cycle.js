@@ -7,9 +7,15 @@ const dateObj = {
 
 const CycleSchema = new Schema({
   updatedDate: dateObj,
-  cycles: {
+  name: {
     type: String,
   },
+  tickets: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Ticket",
+    },
+  ],
 });
 
 const Cycle = mongoose.model("Cycle", CycleSchema);

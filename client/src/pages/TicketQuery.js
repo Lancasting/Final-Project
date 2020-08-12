@@ -9,10 +9,10 @@ import { List } from "semantic-ui-react";
 function TicketQuery() {
   // state of query\
   const [tickets, setTickets] = useState([]);
-  const [query, setQuery] = useState("all");
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
-    API.getAllTickets()
+    API.getAllTickets(query)
       .then(({ data }) => {
         console.log(data);
         setTickets(data);

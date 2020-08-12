@@ -6,13 +6,20 @@ import { Menu, Image, Button } from "semantic-ui-react";
 function Navbar({ loggedIn }) {
   return (
     <Menu secondary>
-      <Image src={logo} width={100} />
+      <Image as={Link} to="/" src={logo} width={100} />
       {loggedIn ? (
-        <Menu.Item position="right">
-          <Button as={Link} to="/signout" color="red">
-            Sign-Out
-          </Button>
-        </Menu.Item>
+        <>
+          <Menu.Item position="right">
+            <Button as={Link} to="/signout" color="red">
+              Sign-Out
+            </Button>
+          </Menu.Item>
+          <Menu.Item>
+            <Button as={Link} to="/tickets" color="blue">
+              Tickets
+            </Button>
+          </Menu.Item>
+        </>
       ) : (
         <>
           <Menu.Item position="right">

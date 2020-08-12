@@ -30,6 +30,7 @@ function TicketQuery() {
         console.log(error);
       });
   }, [query]);
+  useEffect(() => console.log(tickets), [tickets]);
 
   return (
     <>

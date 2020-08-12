@@ -33,7 +33,9 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={Welcome} />
+        <Route exact path="/">
+          <Welcome loggedIn={loggedin} />
+        </Route>
         <Route exact path="/login">
           {loggedin ? (
             <Redirect to="/tickets" />

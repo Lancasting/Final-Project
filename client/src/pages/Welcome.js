@@ -1,6 +1,13 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { Button, Menu, Image } from "semantic-ui-react";
+import {
+  Button,
+  Menu,
+  Image,
+  Container,
+  Header,
+  Icon,
+} from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import logo from "../components/logo.png";
 
@@ -25,6 +32,35 @@ function Welcome() {
           </Button>
         </Menu.Item>
       </Menu>
+      <Container text>
+        <Header
+          as="h1"
+          content="Imagine-a-Company"
+          inverted
+          style={{
+            fontSize: "4em",
+            color: "black",
+            fontWeight: "normal",
+            marginBottom: 0,
+            marginTop: "3em",
+          }}
+        />
+        <Header
+          as="h2"
+          content="Do whatever you want when you want to."
+          inverted
+          style={{
+            fontSize: "1.7em",
+            color: "black",
+            fontWeight: "normal",
+            marginTop: "1.5em",
+          }}
+        />
+        <Button primary size="huge">
+          Get Started
+          <Icon name="right arrow" />
+        </Button>
+      </Container>
     </>
   );
 }

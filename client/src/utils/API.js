@@ -13,4 +13,7 @@ export default {
   getAllTickets() {
     return axios.get("/tickets/all");
   },
+  findOne(id) {
+    return axios.get(`/tickets/${id}`);
+  },
 };

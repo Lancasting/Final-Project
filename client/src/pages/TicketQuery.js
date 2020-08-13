@@ -1,29 +1,21 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API.js";
+import SideBar from "../components/SideBar.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
-import Navbar from "../components/NavBar.js";
 import TicketSummary from "../components/TicketSummary.js";
 import { Helmet } from "react-helmet";
-import {
-  Sidebar,
-  Menu,
-  List,
-  Button,
-  Sticky,
-  Icon,
-  // Rail,
-} from "semantic-ui-react";
+import { List } from "semantic-ui-react";
 
 function TicketQuery() {
   // state of query
-  const [visible, setVisible] = useState(false);
   const [tickets, setTickets] = useState([]);
-  const [query, setQuery] = useState("all");
+  const [selection, setSelection] = useState();
+  const [userInput, setUserInput] = useState();
+  const [query, setQuery] = useState({});
 
   useEffect(() => {
-    API.getAllTickets()
+    API.getAllTickets(query)
       .then(({ data }) => {
-        console.log(data);
         setTickets(data);
       })
       .catch((error) => {
@@ -32,48 +24,34 @@ function TicketQuery() {
   }, [query]);
   useEffect(() => console.log(tickets), [tickets]);
 
+  const formSubmit = (event) => {
+    event.preventDefault();
+    setQuery({ [selection]: userInput });
+  };
+
   return (
     <>
       <Helmet>
         <title>HALP - Ticket Page</title>
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
-      <Navbar loggedIn={true} />
-      <Sidebar.Pushable>
-        <Sidebar
-          as={Menu}
-          animation="overlay"
-          icon="labeled"
-          onHide={() => setVisible(false)}
-          inverted
-          vertical
-          visible={visible}
-          width="thin"
-        >
-          <Menu.Item as="a">Search</Menu.Item>
-          <Menu.Item as="a">Projects</Menu.Item>
-          <Menu.Item as="a">Create</Menu.Item>
-        </Sidebar>
-        <Sidebar.Pusher dimmed={visible}>
-          <Sticky>
-            <Button
-              icon
-              labelPosition="right"
-              onClick={() => setVisible(true)}
-              style={{ zIndex: 1 }}
-            >
-              Menu
-              <Icon name="right arrow" />
-            </Button>
-          </Sticky>
-          <TicketQueryForm />
+      <SideBar>
+        <TicketQueryForm
+          selection={selection}
+          setSelection={setSelection}
+          setUserInput={setUserInput}
+          formSubmit={formSubmit}
+        />
+        {tickets.length === 0 ? (
+          <h1>No Tickets Found</h1>
+        ) : (
           <List>
             {tickets.map((ticket) => (
               <TicketSummary key={ticket._id} {...ticket} />
             ))}
           </List>
-        </Sidebar.Pusher>
-      </Sidebar.Pushable>
+        )}
+      </SideBar>
     </>
   );
 }

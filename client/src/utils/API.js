@@ -10,8 +10,8 @@ export default {
   checkUser() {
     return axios.get("/user/verify");
   },
-  getAllTickets() {
-    return axios.get("/tickets/all");
+  getAllTickets(ticketInfo) {
+    return axios.post("/search", ticketInfo);
   },
   findOne(id) {
     return axios.get(`/tickets/${id}`);

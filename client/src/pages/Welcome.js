@@ -11,6 +11,8 @@ import {
 import { Link } from "react-router-dom";
 import logo from "../components/logo.png";
 
+document.body.style.background = "#b8f5d4";
+
 function Welcome() {
   return (
     <>
@@ -18,28 +20,30 @@ function Welcome() {
         <title>HALP - Welcome</title>
         <meta name="description" content="Welcome Page of the HALP website" />
       </Helmet>
-      <Menu secondary>
-        <Image src={logo} width={100} />
-        <Menu.Item position="right">
-          <Button as={Link} to="/signup" color="blue">
-            Sign up
-          </Button>
-        </Menu.Item>
+      <Container>
+        <Menu secondary>
+          <Image src={logo} width={100} />
+          <Menu.Item position="right">
+            <Button as={Link} to="/signup" color="blue">
+              Sign up
+            </Button>
+          </Menu.Item>
 
-        <Menu.Item>
-          <Button as={Link} to="/login" color="blue">
-            Log-in
-          </Button>
-        </Menu.Item>
-      </Menu>
+          <Menu.Item>
+            <Button as={Link} to="/login" color="blue">
+              Log-in
+            </Button>
+          </Menu.Item>
+        </Menu>
+      </Container>
       <Container text>
         <Header
           as="h1"
-          content="Imagine-a-Company"
+          content="Make work, work better"
           inverted
           style={{
             fontSize: "4em",
-            color: "black",
+            color: "gray",
             fontWeight: "normal",
             marginBottom: 0,
             marginTop: "3em",
@@ -47,7 +51,7 @@ function Welcome() {
         />
         <Header
           as="h2"
-          content="Do whatever you want when you want to."
+          content="Offer fast resolutions"
           inverted
           style={{
             fontSize: "1.7em",

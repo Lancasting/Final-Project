@@ -51,7 +51,7 @@ function Welcome() {
         />
         <Header
           as="h2"
-          content="Offer fast resolutions"
+          content="Assign, track, manage, and resolve tickets effortlessly"
           inverted
           style={{
             fontSize: "1.7em",
@@ -61,7 +61,7 @@ function Welcome() {
           }}
         />
         <Button primary size="huge">
-          Get Started
+          Submit a Ticket
           <Icon name="right arrow" />
         </Button>
       </Container>

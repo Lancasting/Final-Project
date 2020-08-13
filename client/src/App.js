@@ -11,6 +11,7 @@ import TicketQuery from "./pages/TicketQuery";
 import Welcome from "./pages/Welcome.js";
 import Ticket from "./pages/ticket.js";
 import NotFound from "./pages/NotFound.js";
+import UnderConstruction from "./pages/UnderConstruction.js";
 import API from "./utils/API.js";
 import "./App.css";
 
@@ -60,7 +61,12 @@ function App() {
         <Route exact path="/devpathid/:id" component={Ticket} />
         {/* Take this out before finishing */}
         <Route exact path="/devpath" component={TicketQuery} />
-        <Route component={NotFound} />
+        <Route exact path="/construction">
+          <UnderConstruction loggedIn={loggedin} />
+        </Route>
+        <Route>
+          <NotFound loggedIn={loggedin} />
+        </Route>
       </Switch>
     </Router>
   );

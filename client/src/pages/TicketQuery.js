@@ -7,15 +7,14 @@ import { Helmet } from "react-helmet";
 import { List } from "semantic-ui-react";
 
 function TicketQuery() {
-  // state of query\
+  // state of query
   const [tickets, setTickets] = useState([]);
   const [selection, setSelection] = useState();
   const [userInput, setUserInput] = useState();
   const [query, setQuery] = useState({});
 
   useEffect(() => {
-    console.log(query);
-    API.getAllTickets()
+    API.getAllTickets(query)
       .then(({ data }) => {
         setTickets(data);
       })
@@ -27,7 +26,7 @@ function TicketQuery() {
 
   const formSubmit = (event) => {
     event.preventDefault();
-    setQuery({ query: selection, search: userInput });
+    setQuery({ [selection]: userInput });
   };
 
   return (

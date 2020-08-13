@@ -9,7 +9,7 @@ function Ticket() {
   const { id } = useParams();
   const [visible, setVisible] = useState(false);
   const [ticket, setTicket] = useState([]);
-  const [query, _] = useState("/id");
+  const [query, setQuery] = useState("/id");
 
   useEffect(() => {
     API.findOne(id)

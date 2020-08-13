@@ -1,9 +1,8 @@
 const { Ticket } = require("../models");
 
 module.exports = {
-  getAll(req, res) {
-    console.log(req.body);
-    Ticket.find()
+  getAll({ body }, res) {
+    Ticket.find(body)
       .populate("createdBy")
       .then((documents) => {
         res.json(documents);

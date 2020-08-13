@@ -9,12 +9,14 @@ import { List } from "semantic-ui-react";
 function TicketQuery() {
   // state of query\
   const [tickets, setTickets] = useState([]);
-  const [query, setQuery] = useState("");
+  const [selection, setSelection] = useState();
+  const [userInput, setUserInput] = useState();
+  const [query, setQuery] = useState({});
 
   useEffect(() => {
-    API.getAllTickets(query)
+    console.log(query);
+    API.getAllTickets()
       .then(({ data }) => {
-        console.log(data);
         setTickets(data);
       })
       .catch((error) => {
@@ -23,6 +25,11 @@ function TicketQuery() {
   }, [query]);
   useEffect(() => console.log(tickets), [tickets]);
 
+  const formSubmit = (event) => {
+    event.preventDefault();
+    setQuery({ query: selection, search: userInput });
+  };
+
   return (
     <>
       <Helmet>
@@ -30,7 +37,12 @@ function TicketQuery() {
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
       <SideBar>
-        <TicketQueryForm />
+        <TicketQueryForm
+          selection={selection}
+          setSelection={setSelection}
+          setUserInput={setUserInput}
+          formSubmit={formSubmit}
+        />
         <List>
           {tickets.map((ticket) => (
             <TicketSummary key={ticket._id} {...ticket} />

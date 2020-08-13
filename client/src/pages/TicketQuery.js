@@ -42,11 +42,15 @@ function TicketQuery() {
           setUserInput={setUserInput}
           formSubmit={formSubmit}
         />
-        <List>
-          {tickets.map((ticket) => (
-            <TicketSummary key={ticket._id} {...ticket} />
-          ))}
-        </List>
+        {tickets.length === 0 ? (
+          <h1>No Tickets Found</h1>
+        ) : (
+          <List>
+            {tickets.map((ticket) => (
+              <TicketSummary key={ticket._id} {...ticket} />
+            ))}
+          </List>
+        )}
       </SideBar>
     </>
   );

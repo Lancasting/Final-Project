@@ -11,6 +11,9 @@ function Signup({ setLoggedin }) {
     email: null,
     password: null,
   });
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [loggedInError, setLoggedInError] = useState(true);
 
   const formChange = (event) => {
     setUserInformation({
@@ -21,17 +24,27 @@ function Signup({ setLoggedin }) {
 
   const formSubmit = (event) => {
     event.preventDefault();
-    if (userInformation.email && userInformation.password) {
+    !userInformation.email ? setEmailError(true) : setEmailError(false);
+    !userInformation.password
+      ? setPasswordError(true)
+      : setPasswordError(false);
+    if (
+      userInformation.email &&
+      userInformation.password &&
+      userInformation.password >= 6
+    ) {
       API.signup(userInformation)
         .then((results) => {
-          console.log(results);
-          if (!results.errors) {
+          console.log(results.data);
+          if (!results.data.errors) {
             setLoggedin(true);
           }
         })
         .catch((error) => {
           console.log(error.data);
         });
+    } else {
+      setLoggedInError(false);
     }
   };
 
@@ -51,7 +64,13 @@ function Signup({ setLoggedin }) {
             <Image src={logo} width={100} />
             Create your account
           </Header>
-          <AuthenticationForm formChange={formChange} formSubmit={formSubmit} />
+          <AuthenticationForm
+            formChange={formChange}
+            formSubmit={formSubmit}
+            emailError={emailError}
+            passwordError={passwordError}
+            loggedInError={loggedInError}
+          />
         </Grid.Column>
       </Grid>
     </>

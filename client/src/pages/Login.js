@@ -23,10 +23,10 @@ function Login({ setLoggedin }) {
     event.preventDefault();
     if (userInformation.email && userInformation.password) {
       API.login(userInformation)
-        .then(async (results) => {
-          console.log(results.data);
-          if (!results.errors) {
-            await setLoggedin(true);
+        .then((results) => {
+          console.log(results);
+          if (results) {
+            setLoggedin(true);
           }
         })
         .catch((error) => {
@@ -48,7 +48,7 @@ function Login({ setLoggedin }) {
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h2" color="light blue" textAlign="center">
+          <Header as="h2" color="blue" textAlign="center">
             <Image src={logo} width={100} /> Login to your account
           </Header>
           <AuthenticationForm formChange={formChange} formSubmit={formSubmit} />

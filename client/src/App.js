@@ -32,7 +32,7 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, loggedin);
+  }, [loggedin]);
 
   return (
     <Router>

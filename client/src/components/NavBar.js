@@ -4,12 +4,13 @@ import API from "../utils/API.js";
 import { Link } from "react-router-dom";
 import { Menu, Image, Button, Container } from "semantic-ui-react";
 
-function Navbar({ loggedIn }) {
+function Navbar({ loggedIn, setLoggedIn }) {
   const signout = () => {
     console.log("Clicked");
     API.signout()
       .then((result) => {
         console.log(result);
+        setLoggedIn(false);
       })
       .catch((error) => console.log(error));
   };
@@ -21,7 +22,7 @@ function Navbar({ loggedIn }) {
         {loggedIn ? (
           <>
             <Menu.Item position="right">
-              <Button onClick={() => signout} color="red">
+              <Button onClick={signout} color="red">
                 Sign-Out
               </Button>
             </Menu.Item>

@@ -1,15 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import {
-  Button,
-  Menu,
-  Image,
-  Container,
-  Header,
-  Icon,
-} from "semantic-ui-react";
+import { Button, Container, Header, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import logo from "../components/logo.png";
 
 document.body.style.background = "#b8f5d4";
 
@@ -20,22 +12,6 @@ function Welcome() {
         <title>HALP - Welcome</title>
         <meta name="description" content="Welcome Page of the HALP website" />
       </Helmet>
-      <Container>
-        <Menu secondary>
-          <Image src={logo} width={100} />
-          <Menu.Item position="right">
-            <Button as={Link} to="/signup" color="blue">
-              Sign up
-            </Button>
-          </Menu.Item>
-
-          <Menu.Item>
-            <Button as={Link} to="/login" color="blue">
-              Log-in
-            </Button>
-          </Menu.Item>
-        </Menu>
-      </Container>
       <Container text>
         <Header
           as="h1"

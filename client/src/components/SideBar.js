@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import NavBar from "../components/NavBar.js";
 import { Sidebar, Menu, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
@@ -29,7 +28,6 @@ function SideBar({ children }) {
         </Menu.Item>
       </Sidebar>
       <Sidebar.Pusher dimmed={visible}>
-        <NavBar loggedIn={true} />
         <Button onClick={() => setVisible(true)} />
         {children}
       </Sidebar.Pusher>

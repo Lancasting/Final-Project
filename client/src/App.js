@@ -8,6 +8,7 @@ import {
 import Login from "./pages/Login.js";
 import Signup from "./pages/Signup.js";
 import TicketQuery from "./pages/TicketQuery";
+import NavBar from "./components/NavBar.js";
 import Welcome from "./pages/Welcome.js";
 import Ticket from "./pages/ticket.js";
 import NotFound from "./pages/NotFound.js";
@@ -36,6 +37,7 @@ function App() {
 
   return (
     <Router>
+      <NavBar loggedIn={loggedin} setLoggedIn={setLoggedin} />
       <Switch>
         <Route exact path="/">
           <Welcome loggedIn={loggedin} />

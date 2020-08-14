@@ -15,6 +15,8 @@ import UnderConstruction from "./pages/UnderConstruction.js";
 import API from "./utils/API.js";
 import "./App.css";
 
+document.body.style.background = "#b8f5d4";
+
 function App() {
   const [loggedin, setLoggedin] = useState();
 

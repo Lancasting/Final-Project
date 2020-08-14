@@ -50,7 +50,7 @@ function AuthenticationForm({
             error={loggedInError}
             color="red"
             header="Please Enter Valid Email and Password"
-            content="password must be over 6 characters"
+            content="password must be over 6 characters. Email Could Already be used"
           />
         )}
       </Segment>

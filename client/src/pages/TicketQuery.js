@@ -16,9 +16,10 @@ function TicketQuery() {
   useEffect(() => {
     API.getAllTickets(query)
       .then(({ data }) => {
-        setTickets(data);
+        Array.isArray(data) ? setTickets(data) : setTickets([]);
       })
       .catch((error) => {
+        console.log("thisiserror");
         console.log(error);
       });
   }, [query]);

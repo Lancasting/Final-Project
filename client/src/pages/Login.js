@@ -30,7 +30,6 @@ function Login({ setLoggedin }) {
     if (userInformation.email && userInformation.password) {
       API.login(userInformation)
         .then((results) => {
-          console.log(results);
           setPasswordError(false);
           setEmailError(false);
           if (results) {

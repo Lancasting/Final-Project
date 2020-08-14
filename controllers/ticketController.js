@@ -5,6 +5,7 @@ module.exports = {
     Ticket.find(body)
       .populate("createdBy")
       .then((documents) => {
+        console.log(documents);
         res.json(documents);
       })
       .catch((error) => {

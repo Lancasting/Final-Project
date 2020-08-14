@@ -5,7 +5,7 @@ const userController = require("../controllers/userController");
 
 router.post("/user/login", passport.authenticate("local"), (req, res) => {
   if (req.user) {
-    res.json(true);
+    res.json(req.user);
   }
 });
 

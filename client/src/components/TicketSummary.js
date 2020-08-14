@@ -21,7 +21,8 @@ function TicketSummary({ _id, priorityLevel, createdBy, status }) {
           </Grid.Column>
           <Grid.Column mobile={16} tablet={8} computer={4}>
             <p style={{ fontWeight: "bolder" }}>Created By</p>
-            <p>{createdBy.email}</p>
+            <p>Email: {createdBy.email}</p>
+            <p>ID: {createdBy._id}</p>
           </Grid.Column>
         </Grid>
       </List.Item>

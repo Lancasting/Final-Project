@@ -30,8 +30,8 @@ function App() {
         }
         setLoggedin(false);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        console.log("Could not Verify");
       });
   }, [loggedin]);
 

@@ -7,12 +7,20 @@ const dateObj = {
 
 const ProjectSchema = new Schema({
   updatedDate: dateObj,
-  cycles: {
+  name: {
     type: String,
+    required: true,
   },
-  tickets: {
-    type: String,
+  private: {
+    type: Boolean,
+    default: false,
   },
+  cycles: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Cycle",
+    },
+  ],
 });
 
 const Project = mongoose.model("Project", ProjectSchema);

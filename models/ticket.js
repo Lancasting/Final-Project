@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
 
 const dateObj = {
@@ -14,13 +13,13 @@ const TicketSchema = new Schema({
     trim: true,
     validate: [({ length }) => length >= 1, "Please enter a subject"],
   },
-  createBy: {
-    type: String,
-    trim: true,
+  createdBy: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
   },
   updatedBy: {
-    type: String,
-    trim: true,
+    type: Schema.Types.ObjectId,
+    ref: "User",
   },
   description: {
     type: String,
@@ -41,9 +40,12 @@ const TicketSchema = new Schema({
   type: {
     type: String,
   },
-  assignee: {
-    type: String,
-  },
+  assignees: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
 const Ticket = mongoose.model("Ticket", TicketSchema);

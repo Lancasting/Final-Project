@@ -1,44 +1,57 @@
-import React from "react";
-import TicketNavbar from "../components/TicketNavbar.js";
+import React, { useState, useEffect } from "react";
+import API from "../utils/API.js";
+import SideBar from "../components/SideBar.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
-// import TicketSummary from "../components/TicketSummary.js";
+import TicketSummary from "../components/TicketSummary.js";
 import { Helmet } from "react-helmet";
-import { Sidebar, Menu, Header, Image, List } from "semantic-ui-react";
+import { List } from "semantic-ui-react";
 
 function TicketQuery() {
   // state of query
+  const [tickets, setTickets] = useState([]);
+  const [selection, setSelection] = useState();
+  const [userInput, setUserInput] = useState();
+  const [query, setQuery] = useState({});
+
+  useEffect(() => {
+    API.getAllTickets(query)
+      .then(({ data }) => {
+        setTickets(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [query]);
+  useEffect(() => console.log(tickets), [tickets]);
+
+  const formSubmit = (event) => {
+    event.preventDefault();
+    setQuery({ [selection]: userInput });
+  };
+
   return (
     <>
       <Helmet>
         <title>HALP - Ticket Page</title>
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
-      <TicketNavbar />
-      <Sidebar.Pushable>
-        <Sidebar
-          as={Menu}
-          animation="push"
-          icon="labeled"
-          inverted
-          vertical
-          visible={true}
-          width="thin"
-        >
-          <Menu.Item as="a">Search</Menu.Item>
-          <Menu.Item as="a">Projects</Menu.Item>
-          <Menu.Item as="a">Create</Menu.Item>
-        </Sidebar>
-        <Sidebar.Pusher>
-          <TicketQueryForm />
-          <Header as="h3">Application Content</Header>
-          <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
+      <SideBar>
+        <TicketQueryForm
+          selection={selection}
+          setSelection={setSelection}
+          setUserInput={setUserInput}
+          formSubmit={formSubmit}
+        />
+        {tickets.length === 0 ? (
+          <h1>No Tickets Found</h1>
+        ) : (
           <List>
-            {/* Map and render Ticket For Each Item <TicketSummary />
-              array.map(ticket => <TicketSummary />)
-            */}
+            {tickets.map((ticket) => (
+              <TicketSummary key={ticket._id} {...ticket} />
+            ))}
           </List>
-        </Sidebar.Pusher>
-      </Sidebar.Pushable>
+        )}
+      </SideBar>
     </>
   );
 }

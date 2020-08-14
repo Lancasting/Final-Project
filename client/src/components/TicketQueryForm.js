@@ -1,40 +1,38 @@
 import React from "react";
-import { Form, Dropdown, Input } from "semantic-ui-react";
+import { Form, Dropdown, Segment, Input } from "semantic-ui-react";
 
 const options = [
   { key: 1, text: "Status", value: "status" },
-  { key: 2, text: "Ticket Number", value: "ticketNumber" },
-  { key: 3, text: "Assignee", value: "assignee" },
-  { key: 4, text: "Created By", value: "createdBy" },
-  { key: 5, text: "Updated By", value: "updatedBy" },
-  { key: 6, text: "Created Date", value: "createdDate" },
-  { key: 7, text: "Updated Date", value: "updatedDate" },
-  { key: 8, text: "Priority Level", value: "priorityLevel" },
+  { key: 2, text: "Ticket Number", value: "_id" },
+  { key: 3, text: "Created By", value: "createdBy" },
+  { key: 4, text: "Priority Level", value: "priorityLevel" },
 ];
 
-function TicketQueryForm() {
+function TicketQueryForm({ setSelection, setUserInput, formSubmit }) {
   return (
-    <>
-      <Form>
-        <Form.Group>
-          <Input
-            action={
-              <Dropdown
-                button
-                basic
-                floating
-                placeholder="Select Search"
-                options={options}
-                defaultValue="page"
-              />
-            }
-            icon="search"
-            iconPosition="left"
-            placeholder="Search..."
-          />
+    <Segment>
+      <Form onSubmit={formSubmit}>
+        <Form.Group inline>
+          <Form.Field>
+            <Dropdown
+              options={options}
+              placeholder="Set Selection"
+              selection
+              search
+              onChange={(_, { value }) => setSelection(value)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <Input
+              name="search"
+              action={{ icon: "search" }}
+              placeholder="Search..."
+              onChange={(event) => setUserInput(event.target.value)}
+            />
+          </Form.Field>
         </Form.Group>
       </Form>
-    </>
+    </Segment>
   );
 }
 

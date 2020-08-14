@@ -9,10 +9,12 @@ import Login from "./pages/Login.js";
 import Signup from "./pages/Signup.js";
 import TicketQuery from "./pages/TicketQuery";
 import Welcome from "./pages/Welcome.js";
+import Ticket from "./pages/ticket.js";
 import NotFound from "./pages/NotFound.js";
 import API from "./utils/API.js";
-// import logo from "./logo.svg";
 import "./App.css";
+
+document.body.style.background = "#b8f5d4";
 
 function App() {
   const [loggedin, setLoggedin] = useState();
@@ -34,7 +36,9 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={Welcome} />
+        <Route exact path="/">
+          <Welcome loggedIn={loggedin} />
+        </Route>
         <Route exact path="/login">
           {loggedin ? (
             <Redirect to="/tickets" />
@@ -52,6 +56,10 @@ function App() {
         <Route exact path="/tickets">
           {!loggedin ? <Redirect to="/login" /> : <TicketQuery />}
         </Route>
+        <Route exact path="/tickets/:id">
+          {!loggedin ? <Redirect to="/login" /> : <Ticket />}
+        </Route>
+        <Route exact path="/devpathid/:id" component={Ticket} />
         {/* Take this out before finishing */}
         <Route exact path="/devpath" component={TicketQuery} />
         <Route component={NotFound} />

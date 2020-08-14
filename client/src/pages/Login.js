@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Navbar from "../components/NavBar.js";
 import AuthenticationForm from "../components/AuthenticationForm.js";
 import API from "../utils/API.js";
 import { Helmet } from "react-helmet";
@@ -40,6 +41,7 @@ function Login({ setLoggedin }) {
         <title>HALP - Login Page</title>
         <meta name="description" content="Login Page Of The HALP Website" />
       </Helmet>
+      <Navbar loggedIn={false} />
       <Grid
         textAlign="center"
         style={{ height: "125vh" }}

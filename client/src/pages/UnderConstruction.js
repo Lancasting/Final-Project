@@ -1,8 +1,7 @@
 import React from "react";
-import NavBar from "../components/NavBar.js";
 import { Helmet } from "react-helmet";
 
-function UnderConstruction({ loggedIn }) {
+function UnderConstruction() {
   return (
     <>
       <Helmet>
@@ -12,7 +11,6 @@ function UnderConstruction({ loggedIn }) {
           content="Page Not Available form the HALP website"
         />
       </Helmet>
-      <NavBar loggedIn={loggedIn} />
     </>
   );
 }

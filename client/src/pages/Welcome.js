@@ -2,7 +2,6 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { Button, Container, Header, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import NavBar from "../components/NavBar.js";
 
 document.body.style.background = "#b8f5d4";
 
@@ -13,7 +12,6 @@ function Welcome({ loggedIn }) {
         <title>HALP - Welcome</title>
         <meta name="description" content="Welcome Page of the HALP website" />
       </Helmet>
-      <NavBar loggedIn={loggedIn} />
       <Container text>
         <Header
           as="h1"

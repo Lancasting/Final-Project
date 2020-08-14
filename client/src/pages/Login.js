@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "../components/NavBar.js";
 import AuthenticationForm from "../components/AuthenticationForm.js";
 import API from "../utils/API.js";
 import { Helmet } from "react-helmet";
@@ -23,10 +22,10 @@ function Login({ setLoggedin }) {
     event.preventDefault();
     if (userInformation.email && userInformation.password) {
       API.login(userInformation)
-        .then(async (results) => {
-          console.log(results.data);
-          if (!results.errors) {
-            await setLoggedin(true);
+        .then((results) => {
+          console.log(results);
+          if (results) {
+            setLoggedin(true);
           }
         })
         .catch((error) => {
@@ -41,16 +40,14 @@ function Login({ setLoggedin }) {
         <title>HALP - Login Page</title>
         <meta name="description" content="Login Page Of The HALP Website" />
       </Helmet>
-      <Navbar loggedIn={false} />
       <Grid
         textAlign="center"
         style={{ height: "125vh" }}
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h2" color="light blue" textAlign="center">
-            <Image src={logo} width={100} />
-            Login to your account
+          <Header as="h2" color="blue" textAlign="center">
+            <Image src={logo} width={100} /> Login to your account
           </Header>
           <AuthenticationForm formChange={formChange} formSubmit={formSubmit} />
         </Grid.Column>

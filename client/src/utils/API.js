@@ -7,6 +7,9 @@ export default {
   login(userInfo) {
     return axios.post("/user/login", userInfo);
   },
+  signout() {
+    return axios.get("/signout");
+  },
   checkUser() {
     return axios.get("/user/verify");
   },

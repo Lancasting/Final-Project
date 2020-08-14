@@ -18,9 +18,15 @@ function SideBar({ children }) {
         visible={visible}
         width="thin"
       >
-        <Menu.Item as={Link} to="/tickets">Search</Menu.Item>
-        <Menu.Item as={Link} to="/construction">Projects</Menu.Item>
-        <Menu.Item as={Link} to="/construction">Create</Menu.Item>
+        <Menu.Item as={Link} to="/tickets">
+          Search
+        </Menu.Item>
+        <Menu.Item as={Link} to="/construction">
+          Projects
+        </Menu.Item>
+        <Menu.Item as={Link} to="/construction">
+          Create
+        </Menu.Item>
       </Sidebar>
       <Sidebar.Pusher dimmed={visible}>
         <NavBar loggedIn={true} />

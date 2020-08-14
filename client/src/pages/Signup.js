@@ -26,7 +26,7 @@ function Signup({ setLoggedin }) {
       API.signup(userInformation)
         .then((results) => {
           console.log(results.data);
-          if (results.errors) {
+          if (!results.errors) {
             setLoggedin(true);
           }
         })

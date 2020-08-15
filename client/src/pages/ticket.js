@@ -36,7 +36,6 @@ function Ticket() {
       });
   };
   const handleChange = (event, data) => {
-    console.log(data.name);
     setTicket((prevState) => {
       return {
         ...prevState,
@@ -45,6 +44,17 @@ function Ticket() {
     });
   };
   useEffect(() => console.log(ticket), [ticket]);
+
+  const handleDelete = () => {
+    API.deleteOne(ticket)
+      .then((response) => {
+        console.log("Successfully Deleted");
+        window.location = "/tickets";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const statusOptions = [
     { key: 1, text: "New", value: "New" },
@@ -119,7 +129,7 @@ function Ticket() {
           <Button onClick={handleSave} primary>
             Save
           </Button>
-          <Button inverted color="red">
+          <Button onClick={handleDelete} inverted color="red">
             Delete
           </Button>
         </List>

@@ -26,4 +26,11 @@ module.exports = {
       res.json(ticket);
     });
   },
+  deleteOne(req, res) {
+    console.log(req.params);
+    console.log(req.body);
+    Ticket.findByIdAndDelete(req.body._id, req.body).then((ticket) => {
+      res.json(ticket);
+    });
+  },
 };

@@ -18,7 +18,7 @@ function Welcome({ loggedIn }) {
           content="Make work, work better"
           inverted
           style={{
-            fontSize: "4em",
+            fontSize: "5em",
             color: "white",
             fontWeight: "normal",
             marginBottom: 0,
@@ -30,7 +30,7 @@ function Welcome({ loggedIn }) {
           content="Assign, track, manage, and resolve tickets effortlessly"
           inverted
           style={{
-            fontSize: "1.5em",
+            fontSize: "2em",
             color: "white",
             fontWeight: "normal",
             marginTop: "1.5em",
@@ -47,8 +47,8 @@ function Welcome({ loggedIn }) {
           content="Execution is Doing Things Right"
           inverted
           style={{
-            fontSize: "2em",
-            color: "black",
+            fontSize: "3em",
+            color: "gray",
             fontWeight: "normal",
             marginTop: "3em",
           }}

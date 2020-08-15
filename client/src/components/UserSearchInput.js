@@ -3,7 +3,7 @@ import { Input } from "semantic-ui-react";
 import useDebounce from "../utils/useDebouncedValue.js";
 import API from "../utils/API.js";
 
-function UserSearchInput({ where }) {
+function UserSearchInput({ where, setItem }) {
   const [users, setUsers] = useState([]);
   const [query, setQuery] = useState();
 
@@ -25,6 +25,7 @@ function UserSearchInput({ where }) {
   }, [query]);
 
   const handleChange = ({ target }) => {
+    // setItem(target.value);
     setQuery(target.value);
   };
 

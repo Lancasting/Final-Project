@@ -13,9 +13,9 @@ export default {
   checkUser() {
     return axios.get("/user/verify");
   },
-  // findUser() {
-
-  // },
+  findUsersBy() {
+    return axios.get("/users/search");
+  },
   getAllTickets(ticketInfo) {
     return axios.post("/search", ticketInfo);
   },

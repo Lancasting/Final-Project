@@ -13,4 +13,13 @@ module.exports = {
         res.json(error);
       });
   },
+  find({ body }, res) {
+    User.find(body)
+      .then((collections) => {
+        res.json(collections);
+      })
+      .catch((error) => {
+        res.json(error);
+      });
+  },
 };

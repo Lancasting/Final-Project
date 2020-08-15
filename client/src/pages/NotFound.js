@@ -1,8 +1,7 @@
 import React from "react";
-import NavBar from "../components/NavBar.js";
 import { Helmet } from "react-helmet";
 
-function NotFound({ loggedIn }) {
+function NotFound() {
   return (
     <>
       <Helmet>

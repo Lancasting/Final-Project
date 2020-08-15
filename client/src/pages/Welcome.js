@@ -4,7 +4,7 @@ import { Button, Container, Header, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "./welcome.css";
 
-function Welcome({ loggedIn }) {
+function Welcome() {
   return (
     <>
       <Helmet>

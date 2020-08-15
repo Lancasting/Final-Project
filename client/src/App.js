@@ -30,8 +30,8 @@ function App() {
         }
         setLoggedin(false);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        console.log("Could not Verify");
       });
   }, [loggedin]);
 
@@ -62,12 +62,13 @@ function App() {
         <Route exact path="/tickets/:id">
           {!loggedin ? <Redirect to="/login" /> : <Ticket />}
         </Route>
-        <Route exact path="/devpathid/:id" component={Ticket} />
-        {/* Take this out before finishing */}
-        <Route exact path="/devpath" component={TicketQuery} />
         <Route exact path="/construction">
           <UnderConstruction loggedIn={loggedin} />
         </Route>
+        {/* Take Below out before finishing */}
+        <Route exact path="/devpath" component={TicketQuery} />
+        <Route exact path="/devpathid/:id" component={Ticket} />
+        {/* Take Above out before finishing */}
         <Route>
           <NotFound loggedIn={loggedin} />
         </Route>

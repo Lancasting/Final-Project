@@ -6,10 +6,8 @@ import { Menu, Image, Button, Container } from "semantic-ui-react";
 
 function Navbar({ loggedIn, setLoggedIn }) {
   const signout = () => {
-    console.log("Clicked");
     API.signout()
-      .then((result) => {
-        console.log(result);
+      .then(() => {
         setLoggedIn(false);
       })
       .catch((error) => console.log(error));

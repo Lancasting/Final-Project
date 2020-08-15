@@ -1,3 +1,5 @@
-body{
-    background-image: url("/images/Welcomebackground.png")!important;
-};
+body {
+    background-image: url("/images/welcomebackground.png")!important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    };

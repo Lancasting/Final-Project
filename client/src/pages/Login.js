@@ -10,6 +10,9 @@ function Login({ setLoggedin }) {
     email: null,
     password: null,
   });
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [loggedInError, setLoggedInError] = useState(true);
 
   const formChange = (event) => {
     setUserInformation({
@@ -20,16 +23,23 @@ function Login({ setLoggedin }) {
 
   const formSubmit = (event) => {
     event.preventDefault();
+    !userInformation.email ? setEmailError(true) : setEmailError(false);
+    !userInformation.password
+      ? setPasswordError(true)
+      : setPasswordError(false);
     if (userInformation.email && userInformation.password) {
       API.login(userInformation)
         .then((results) => {
-          console.log(results);
+          setPasswordError(false);
+          setEmailError(false);
           if (results) {
             setLoggedin(true);
+            setLoggedInError(true);
           }
         })
-        .catch((error) => {
-          console.log(error.data);
+        .catch(() => {
+          setLoggedInError(false);
+          console.log("Incorrect Username/Password");
         });
     }
   };
@@ -49,7 +59,14 @@ function Login({ setLoggedin }) {
           <Header as="h2" color="blue" textAlign="center">
             <Image src={logo} width={100} /> Login to your account
           </Header>
-          <AuthenticationForm formChange={formChange} formSubmit={formSubmit} />
+          <AuthenticationForm
+            formChange={formChange}
+            formSubmit={formSubmit}
+            emailError={emailError}
+            passwordError={passwordError}
+            loggedInError={loggedInError}
+            page="login"
+          />
         </Grid.Column>
       </Grid>
     </>

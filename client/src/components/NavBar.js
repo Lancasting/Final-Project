@@ -14,7 +14,7 @@ function Navbar({ loggedIn, setLoggedIn }) {
   };
 
   return (
-    <Container>
+    <Container style={{ padding: "50px" }}>
       <Menu secondary>
         <Image as={Link} to="/" src={logo} width={100} />
         {loggedIn ? (

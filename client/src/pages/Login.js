@@ -55,7 +55,7 @@ function Login({ setLoggedin }) {
         style={{ height: "125vh" }}
         verticalAlign="middle"
       >
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column style={{ maxWidth: 450, marginTop: "-500px" }}>
           <Header as="h2" color="blue" textAlign="center">
             <Image src={logo} width={100} /> Login to your account
           </Header>

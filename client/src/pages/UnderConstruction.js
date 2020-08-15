@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { Button, Container, Icon, Header } from "semantic-ui-react";
 
 function UnderConstruction() {
   return (
@@ -11,6 +12,19 @@ function UnderConstruction() {
           content="Page Not Available form the HALP website"
         />
       </Helmet>
+      <Container textAlign="center">
+        <Header
+          as="h2"
+          content="Page Under Construction"
+          inverted
+          style={{
+            fontSize: "5em",
+            color: "white",
+            fontWeight: "normal",
+            marginTop: "4em",
+          }}
+        />
+      </Container>
     </>
   );
 }

@@ -22,4 +22,8 @@ export default {
   findOne(id) {
     return axios.get(`/tickets/${id}`);
   },
+  updateOne(data) {
+    console.log(data);
+    return axios.put("/tickets/update", data);
+  },
 };

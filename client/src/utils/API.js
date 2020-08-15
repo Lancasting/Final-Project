@@ -23,7 +23,9 @@ export default {
     return axios.get(`/tickets/${id}`);
   },
   updateOne(data) {
-    console.log(data);
     return axios.put("/tickets/update", data);
+  },
+  deleteOne(ticketInfo) {
+    return axios.delete("/tickets/delete", { data: ticketInfo });
   },
 };

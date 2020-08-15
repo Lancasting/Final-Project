@@ -5,18 +5,17 @@ import API from "../utils/API.js";
 
 function UserSearchInput({ where }) {
   const [users, setUsers] = useState([]);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState();
 
-  const debouncedSearchTerm = useDebounce(query, 500);
+  const debouncedSearchTerm = useDebounce(query, 2000);
 
   useEffect(() => {
     if (!query) {
       return;
     }
     if (debouncedSearchTerm) {
-      API.findUsersBy({ [where]: query })
+      API.findUsersBy([where, query])
         .then(({ data }) => {
-          console.log(data);
           setUsers(data);
         })
         .catch((err) => {

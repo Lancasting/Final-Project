@@ -13,8 +13,8 @@ export default {
   checkUser() {
     return axios.get("/user/verify");
   },
-  findUsersBy() {
-    return axios.get("/users/search");
+  findUsersBy(query) {
+    return axios.post("/users/search", query);
   },
   getAllTickets(ticketInfo) {
     return axios.post("/search", ticketInfo);

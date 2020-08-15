@@ -13,7 +13,7 @@ router.get("/signout", (req, res) => {
   res.json(req.user);
 });
 
-router.route("/users/search").get(userController.find);
+router.route("/users/search").post(userController.find);
 
 router.route("/user/signup").post(userController.create);
 

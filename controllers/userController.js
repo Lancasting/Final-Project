@@ -14,7 +14,9 @@ module.exports = {
       });
   },
   find({ body }, res) {
-    User.find(body)
+    const query = body[0];
+    const where = body[1];
+    User.find({ [query]: { $regex: where } })
       .then((collections) => {
         res.json(collections);
       })

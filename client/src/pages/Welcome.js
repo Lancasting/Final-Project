@@ -2,8 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { Button, Container, Header, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-
-document.body.style.backgroundImage = require("../pages/Welcomebackground.png");
+import "./welcome.css";
 
 function Welcome() {
   return (
@@ -18,9 +17,9 @@ function Welcome() {
           content="Make work, work better"
           inverted
           style={{
-            fontSize: "5em",
-            color: "white",
-            fontWeight: "normal",
+            fontSize: "7em",
+            color: "#4d3ce5",
+            fontWeight: "bold",
             marginBottom: 0,
             marginTop: "3em",
           }}
@@ -32,7 +31,7 @@ function Welcome() {
           style={{
             fontSize: "2em",
             color: "white",
-            fontWeight: "normal",
+            fontWeight: "bold",
             marginTop: "1.5em",
           }}
         />
@@ -48,9 +47,9 @@ function Welcome() {
           inverted
           style={{
             fontSize: "3em",
-            color: "gray",
+            color: "white",
             fontWeight: "normal",
-            marginTop: "3em",
+            marginTop: "2em",
           }}
         />
       </Container>

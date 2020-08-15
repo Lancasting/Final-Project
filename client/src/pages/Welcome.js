@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 document.body.style.background = "#b8f5d4";
 
-function Welcome({ loggedIn }) {
+function Welcome() {
   return (
     <>
       <Helmet>

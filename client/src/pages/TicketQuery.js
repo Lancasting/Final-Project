@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API.js";
 import SideBar from "../components/SideBar.js";
+import UserSearchInput from "../components/UserSearchInput.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
 import TicketSummary from "../components/TicketSummary.js";
 import { Helmet } from "react-helmet";
@@ -16,9 +17,10 @@ function TicketQuery() {
   useEffect(() => {
     API.getAllTickets(query)
       .then(({ data }) => {
-        setTickets(data);
+        Array.isArray(data) ? setTickets(data) : setTickets([]);
       })
       .catch((error) => {
+        console.log("thisiserror");
         console.log(error);
       });
   }, [query]);
@@ -36,6 +38,7 @@ function TicketQuery() {
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
       <SideBar>
+        <UserSearchInput where="email" />
         <TicketQueryForm
           selection={selection}
           setSelection={setSelection}

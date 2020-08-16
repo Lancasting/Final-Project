@@ -129,7 +129,11 @@ function Create({ userInfo }) {
                     content="Type Description Of Problem"
                   />
                   <Modal.Content>
-                    <TextArea name="description" onChange={handleChange} placeholder="Tell us more" />
+                    <TextArea
+                      name="description"
+                      onChange={handleChange}
+                      placeholder="Tell us more"
+                    />
                   </Modal.Content>
                   <Modal.Actions>
                     <Button color="red" onClick={() => setOpen(false)}>

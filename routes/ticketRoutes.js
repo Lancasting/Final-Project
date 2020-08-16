@@ -5,5 +5,4 @@ router.route("/search").post(ticketController.getAll);
 router.route("/tickets/:id").get(ticketController.getOne);
 router.route("/tickets/update").put(ticketController.updateOne);
 router.route("/tickets/delete").delete(ticketController.deleteOne);
-
 module.exports = router;

@@ -2,7 +2,7 @@ import React from "react";
 import { List, Grid, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-function TicketSummary({ _id, priorityLevel, createdBy, assignees, status }) {
+function TicketSummary({ _id, priorityLevel, createdBy, status }) {
   return (
     <>
       <List.Item style={{ color: "black", padding: "10px" }}>
@@ -27,17 +27,6 @@ function TicketSummary({ _id, priorityLevel, createdBy, assignees, status }) {
             <p style={{ fontWeight: "bolder" }}>Created By</p>
             <p>Email: {createdBy.email}</p>
             <p>ID: {createdBy._id}</p>
-          </Grid.Column>
-          <Grid.Column>
-            <p style={{ fontWeight: "bolder" }}>Assigned To</p>
-            {assignees.length > 0 ? (
-              <>
-                <p>Email: {assignees.email}</p>
-                <p>ID: {assignees._id}</p>
-              </>
-            ) : (
-              <p>None</p>
-            )}
           </Grid.Column>
         </Grid>
       </List.Item>

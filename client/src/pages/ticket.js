@@ -47,7 +47,7 @@ function Ticket() {
 
   const handleDelete = () => {
     API.deleteOne(ticket)
-      .then((response) => {
+      .then(() => {
         console.log("Successfully Deleted");
         window.location = "/tickets";
       })

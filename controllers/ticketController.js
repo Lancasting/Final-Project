@@ -33,4 +33,13 @@ module.exports = {
       res.json(ticket);
     });
   },
+  create({ body }, res) {
+    Ticket.create(body)
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((error) => {
+        res.json(error);
+      });
+  },
 };

@@ -2,8 +2,9 @@ const router = require("express").Router();
 
 router.get("/user/verify", ({ user }, res) => {
   if (user) {
-    res.json(true);
+    return res.json({ email: user[0].email, _id: user[0]._id });
   }
+  res.json();
 });
 
 module.exports = router;

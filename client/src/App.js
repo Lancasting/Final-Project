@@ -10,6 +10,7 @@ import Signup from "./pages/Signup.js";
 import TicketQuery from "./pages/TicketQuery";
 import NavBar from "./components/NavBar.js";
 import Welcome from "./pages/Welcome.js";
+import Create from "./pages/Create.js";
 import Ticket from "./pages/ticket.js";
 import NotFound from "./pages/NotFound.js";
 import UnderConstruction from "./pages/UnderConstruction.js";
@@ -20,11 +21,14 @@ document.body.style.background = "#b8f5d4";
 
 function App() {
   const [loggedin, setLoggedin] = useState();
+  const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
     API.checkUser()
-      .then((result) => {
-        if (result.data) {
+      .then(({ data }) => {
+        console.log(data);
+        setUserInfo(data);
+        if (data) {
           setLoggedin(true);
           return;
         }
@@ -39,9 +43,7 @@ function App() {
     <Router>
       <NavBar loggedIn={loggedin} setLoggedIn={setLoggedin} />
       <Switch>
-        <Route exact path="/">
-          <Welcome loggedIn={loggedin} />
-        </Route>
+        <Route exact path="/" component={Welcome} />
         <Route exact path="/login">
           {loggedin ? (
             <Redirect to="/tickets" />
@@ -62,11 +64,19 @@ function App() {
         <Route exact path="/tickets/:id">
           {!loggedin ? <Redirect to="/login" /> : <Ticket />}
         </Route>
+        <Route exact path="/create">
+          {!loggedin ? (
+            <Redirect to="/login" />
+          ) : (
+            <Create userInfo={userInfo} />
+          )}
+        </Route>
         <Route exact path="/construction">
           <UnderConstruction loggedIn={loggedin} />
         </Route>
         {/* Take Below out before finishing */}
         <Route exact path="/devpath" component={TicketQuery} />
+        <Route exact path="/devpath/create" component={Create} />
         <Route exact path="/devpathid/:id" component={Ticket} />
         {/* Take Above out before finishing */}
         <Route>

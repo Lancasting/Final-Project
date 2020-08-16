@@ -1,0 +1,190 @@
+import React, { useState, useEffect } from "react";
+import SideBar from "../components/SideBar.js";
+import UserSearchInput from "../components/UserSearchInput.js";
+import {
+  Input,
+  Dropdown,
+  Button,
+  Form,
+  Container,
+  Segment,
+  Modal,
+  Header,
+  Icon,
+  TextArea,
+} from "semantic-ui-react";
+import Helmet from "react-helmet";
+// import API from "../utils/API.js";
+
+function Create({ userInfo }) {
+  const [ticket, setTicket] = useState({
+    assignees: [userInfo._id],
+    subject: "Technical Support",
+  });
+  const [open, setOpen] = useState(false);
+
+  const statusOptions = [
+    { key: 1, text: "New", value: "New" },
+    { key: 2, text: "In Progress", value: "In Progress" },
+    {
+      key: 3,
+      text: "Waiting for Customer",
+      value: "Waiting for Customer",
+    },
+    { key: 4, text: "Completed", value: "Completed" },
+  ];
+  const typeOptions = [
+    { key: 1, text: "Hardware", value: "Hardware" },
+    { key: 2, text: "Software", value: "Software" },
+    { key: 3, text: "Inquiry", value: "Inquiry" },
+    { key: 4, text: "Misc.", value: "Misc." },
+  ];
+  const priorityOptions = [
+    { key: 1, text: "1", value: 1 },
+    { key: 2, text: "2", value: 2 },
+    { key: 3, text: "3", value: 3 },
+    { key: 4, text: "4", value: 4 },
+    { key: 5, text: "5", value: 5 },
+  ];
+  useEffect(() => {
+    console.log("test");
+    console.log(userInfo);
+  }, []);
+
+  const handleSave = (event) => {
+    event.preventDefault();
+    console.log(ticket);
+    // API.updateOne(ticket)
+    //   .then(({ data }) => {
+    //     console.log(data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+  };
+  const handleChange = (event, data) => {
+    console.log(data.name);
+    setTicket((prevState) => {
+      return {
+        ...prevState,
+        [data.name]: data.value,
+      };
+    });
+  };
+
+  return (
+    <>
+      <Helmet>
+        <title>HALP - Create Ticket</title>
+        <meta
+          name="description"
+          content="Create Ticket Page Of The HALP Website"
+        />
+      </Helmet>
+      <SideBar>
+        <Container as={Segment}>
+          <Form>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label>Created By:</label>
+                <Input
+                  name="_id"
+                  value={userInfo._id}
+                  content={userInfo.email}
+                  disabled
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Status:</label>
+                <Dropdown
+                  name="status"
+                  options={statusOptions}
+                  placeholder="New"
+                  selection
+                  search
+                  onChange={handleChange}
+                />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label>Subject:</label>
+                <Input
+                  name="subject"
+                  placeholder="Technical Support"
+                  onChange={handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Description:</label>
+                <Modal
+                  closeIcon
+                  open={open}
+                  trigger={<Button>Edit</Button>}
+                  onClose={() => setOpen(false)}
+                  onOpen={() => setOpen(true)}
+                >
+                  <Header
+                    icon="archive"
+                    content="Type Description Of Problem"
+                  />
+                  <Modal.Content>
+                    <TextArea name="description" onChange={handleChange} placeholder="Tell us more" />
+                  </Modal.Content>
+                  <Modal.Actions>
+                    <Button color="red" onClick={() => setOpen(false)}>
+                      <Icon name="remove" /> Cancel
+                    </Button>
+                    <Button color="green" onClick={() => setOpen(false)}>
+                      <Icon name="checkmark" /> Save
+                    </Button>
+                  </Modal.Actions>
+                </Modal>
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label>Assignee:</label>
+                <UserSearchInput setTicket={setTicket} />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label>Type:</label>
+                <Dropdown
+                  name="type"
+                  options={typeOptions}
+                  placeholder="Hardware"
+                  selection
+                  search
+                  onChange={handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Priority Level:</label>
+                <Dropdown
+                  name="priorityLevel"
+                  options={priorityOptions}
+                  placeholder="4"
+                  selection
+                  search
+                  onChange={handleChange}
+                />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group>
+              <Button onClick={handleSave} primary>
+                Create
+              </Button>
+              <Button inverted color="red">
+                Delete
+              </Button>
+            </Form.Group>
+          </Form>
+        </Container>
+      </SideBar>
+    </>
+  );
+}
+
+export default Create;

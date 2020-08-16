@@ -20,6 +20,9 @@ function SideBar({ children }) {
         <Menu.Item as={Link} to="/tickets">
           Search
         </Menu.Item>
+        <Menu.Item as={Link} to="/create">
+          Create
+        </Menu.Item>
         <Menu.Item as={Link} to="/construction">
           Projects
         </Menu.Item>

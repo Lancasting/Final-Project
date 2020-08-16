@@ -26,7 +26,6 @@ function App() {
   useEffect(() => {
     API.checkUser()
       .then(({ data }) => {
-        console.log(data);
         setUserInfo(data);
         if (data) {
           setLoggedin(true);

@@ -19,6 +19,7 @@ import API from "../utils/API.js";
 function Create({ userInfo }) {
   const [ticket, setTicket] = useState({
     createdBy: [userInfo._id],
+    updatedBy: [userInfo._id],
     assignees: [userInfo._id],
     subject: "Technical Support",
   });

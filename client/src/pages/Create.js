@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SideBar from "../components/SideBar.js";
 import UserSearchInput from "../components/UserSearchInput.js";
 import {
@@ -13,10 +13,11 @@ import {
   Icon,
   TextArea,
 } from "semantic-ui-react";
+import { withRouter } from "react-router-dom";
 import Helmet from "react-helmet";
 import API from "../utils/API.js";
 
-function Create({ userInfo }) {
+function Create({ userInfo, history }) {
   const [ticket, setTicket] = useState({
     createdBy: [userInfo._id],
     updatedBy: [userInfo._id],
@@ -48,10 +49,6 @@ function Create({ userInfo }) {
     { key: 4, text: "4", value: 4 },
     { key: 5, text: "5", value: 5 },
   ];
-  useEffect(() => {
-    console.log("test");
-    console.log(userInfo);
-  }, []);
 
   const handleSave = (event) => {
     event.preventDefault();
@@ -59,6 +56,7 @@ function Create({ userInfo }) {
     API.createTicket(ticket)
       .then(({ data }) => {
         console.log(data);
+        history.push(`/tickets/${data._id}`);
       })
       .catch((error) => {
         console.log(error);
@@ -199,4 +197,4 @@ function Create({ userInfo }) {
   );
 }
 
-export default Create;
+export default withRouter(Create);

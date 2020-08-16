@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@artsy/fresnel": "^1.2.0",
     "axios": "^0.19.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -24,5 +25,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "yarn-or-npm": "^3.0.1"
+  }
 }

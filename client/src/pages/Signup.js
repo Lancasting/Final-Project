@@ -5,6 +5,16 @@ import { Helmet } from "react-helmet";
 import { Grid, Header, Image } from "semantic-ui-react";
 import API from "../utils/API.js";
 import logo from "../components/logo.png";
+import { createMedia } from '@artsy/fresnel'
+
+
+const { MediaContextProvider, Media } = createMedia({
+  breakpoints: {
+    mobile: 0,
+    tablet: 768,
+    computer: 1024,
+  },
+});
 
 function Signup({ setLoggedin }) {
   const [userInformation, setUserInformation] = useState({
@@ -58,7 +68,7 @@ function Signup({ setLoggedin }) {
         style={{ height: "125vh" }}
         verticalAlign="middle"
       >
-        <Grid.Column style={{ maxWidth: 450, marginTop: "-500px" }}>
+        <Grid.Column style={{ maxWidth: 450, marginTop: "-300px" }}>
           <Header as="h2" color="blue" textAlign="center">
             <Image src={logo} width={100} />
             Create your account

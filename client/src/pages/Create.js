@@ -14,10 +14,11 @@ import {
   TextArea,
 } from "semantic-ui-react";
 import Helmet from "react-helmet";
-// import API from "../utils/API.js";
+import API from "../utils/API.js";
 
 function Create({ userInfo }) {
   const [ticket, setTicket] = useState({
+    createdBy: [userInfo._id],
     assignees: [userInfo._id],
     subject: "Technical Support",
   });
@@ -54,16 +55,15 @@ function Create({ userInfo }) {
   const handleSave = (event) => {
     event.preventDefault();
     console.log(ticket);
-    // API.updateOne(ticket)
-    //   .then(({ data }) => {
-    //     console.log(data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    API.createTicket(ticket)
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   const handleChange = (event, data) => {
-    console.log(data.name);
     setTicket((prevState) => {
       return {
         ...prevState,
@@ -130,6 +130,7 @@ function Create({ userInfo }) {
                   />
                   <Modal.Content>
                     <TextArea
+                      style={{ height: "100%", width: "100%" }}
                       name="description"
                       onChange={handleChange}
                       placeholder="Tell us more"
@@ -180,8 +181,14 @@ function Create({ userInfo }) {
               <Button onClick={handleSave} primary>
                 Create
               </Button>
-              <Button inverted color="red">
-                Delete
+              <Button
+                onClick={() => {
+                  window.location = "/tickets";
+                }}
+                inverted
+                color="red"
+              >
+                Cancel
               </Button>
             </Form.Group>
           </Form>

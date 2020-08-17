@@ -16,6 +16,7 @@ function SideBar({ children }) {
         vertical
         visible={visible}
         width="thin"
+        color="blue"
       >
         <Menu.Item as={Link} to="/tickets">
           Search

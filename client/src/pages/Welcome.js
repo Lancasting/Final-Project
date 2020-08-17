@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { Button, Container, Header, Icon } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Container, Header } from "semantic-ui-react";
+// import { Link } from "react-router-dom";
 import "./welcome.css";
 
 function Welcome() {

@@ -20,7 +20,7 @@ function Navbar({ loggedIn, setLoggedIn }) {
         {loggedIn ? (
           <>
             <Menu.Item position="right">
-              <Button onClick={signout} color="red">
+              <Button onClick={signout} color="blue">
                 Sign-Out
               </Button>
             </Menu.Item>

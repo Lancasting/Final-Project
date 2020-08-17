@@ -5,17 +5,16 @@ import { Helmet } from "react-helmet";
 import { Grid, Header, Image } from "semantic-ui-react";
 import API from "../utils/API.js";
 import logo from "../components/logo.png";
-import { createMedia } from '@artsy/fresnel'
+// import { createMedia } from '@artsy/fresnel'
 import "./login.css";
 
-
-const { MediaContextProvider, Media } = createMedia({
-  breakpoints: {
-    mobile: 0,
-    tablet: 768,
-    computer: 1024,
-  },
-});
+// const { MediaContextProvider, Media } = createMedia({
+//   breakpoints: {
+//     mobile: 0,
+//     tablet: 768,
+//     computer: 1024,
+//   },
+// });
 
 function Signup({ setLoggedin }) {
   const [userInformation, setUserInformation] = useState({

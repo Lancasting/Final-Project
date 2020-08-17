@@ -12,10 +12,11 @@ passport.use(
     },
     //Check login information
     (email, password, done) => {
+      console.log(`Pass: ${password}`);
       //Query email from database
       db.User.find({ email: email }).then((user) => {
         //Check for user
-        if (!user) {
+        if (!user[0]) {
           //Return callback with massage
           return done(null, false, {
             message: "incorrect Email",

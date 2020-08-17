@@ -4,7 +4,7 @@ import SideBar from "../components/SideBar.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
 import TicketSummary from "../components/TicketSummary.js";
 import { Helmet } from "react-helmet";
-import { List } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 
 function TicketQuery() {
   // state of query
@@ -27,6 +27,10 @@ function TicketQuery() {
 
   const formSubmit = (event) => {
     event.preventDefault();
+    if (!selection) {
+      setQuery({});
+      return;
+    }
     setQuery({ [selection]: userInput });
   };
 
@@ -38,7 +42,7 @@ function TicketQuery() {
       </Helmet>
       <SideBar>
         <TicketQueryForm
-          selection={selection}
+          current={selection}
           setSelection={setSelection}
           setUserInput={setUserInput}
           formSubmit={formSubmit}
@@ -46,11 +50,11 @@ function TicketQuery() {
         {tickets.length === 0 ? (
           <h1>No Tickets Found</h1>
         ) : (
-          <List>
+          <Container fluid>
             {tickets.map((ticket) => (
               <TicketSummary key={ticket._id} {...ticket} />
             ))}
-          </List>
+          </Container>
         )}
       </SideBar>
     </>

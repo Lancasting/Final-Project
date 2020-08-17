@@ -5,8 +5,8 @@ module.exports = {
     const newAccount = new User(body);
     newAccount.hashPassword();
     User.create(newAccount)
-      .then(({ data }) => {
-        res.json({email: data.email, _id: data._id});
+      .then(() => {
+        res.redirect(307, "/user/login")
       })
       .catch((error) => {
         res.json(error);

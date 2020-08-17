@@ -5,7 +5,7 @@ const options = [
   { key: 0, text: "", value: "" },
   { key: 1, text: "Status", value: "status" },
   { key: 2, text: "Ticket Number", value: "_id" },
-  { key: 3, text: "Created By", value: "createdBy" },
+  { key: 3, text: "Type", value: "type" },
   { key: 4, text: "Priority Level", value: "priorityLevel" },
 ];
 

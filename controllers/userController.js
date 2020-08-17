@@ -13,11 +13,9 @@ module.exports = {
       });
   },
   find({ body }, res) {
-    const query = body[0];
-    const where = body[1];
-    User.find({ [query]: { $regex: where } })
+    User.find({ [body[0]]: { $regex: body[1] } })
       .then((collections) => {
-        res.json(collections);
+        res.json(collections.map(user => ({ email: user.email, _id: user._id})));
       })
       .catch((error) => {
         res.json(error);

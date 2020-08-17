@@ -86,33 +86,17 @@ function Create({ userInfo, history }) {
             <Form.Group widths="equal">
               <Form.Field>
                 <label>Created By:</label>
-                <Input
-                  name="_id"
-                  value={userInfo._id}
-                  content={userInfo.email}
-                  disabled
-                />
+                <Input name="_id" value={userInfo._id} disabled />
               </Form.Field>
               <Form.Field>
-                <label>Status:</label>
-                <Dropdown
-                  name="status"
-                  options={statusOptions}
-                  placeholder="New"
-                  selection
-                  search
-                  onChange={handleChange}
-                />
+                <label>Updated By:</label>
+                <Input name="updatedBy" value={userInfo._id} disabled />
               </Form.Field>
             </Form.Group>
             <Form.Group widths="equal">
               <Form.Field>
-                <label>Subject:</label>
-                <Input
-                  name="subject"
-                  placeholder="Technical Support"
-                  onChange={handleChange}
-                />
+                <label>Assignee:</label>
+                <UserSearchInput setTicket={setTicket} />
               </Form.Field>
               <Form.Field>
                 <label>Description:</label>
@@ -148,12 +132,6 @@ function Create({ userInfo, history }) {
             </Form.Group>
             <Form.Group widths="equal">
               <Form.Field>
-                <label>Assignee:</label>
-                <UserSearchInput setTicket={setTicket} />
-              </Form.Field>
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Field>
                 <label>Type:</label>
                 <Dropdown
                   name="type"
@@ -172,6 +150,27 @@ function Create({ userInfo, history }) {
                   placeholder="4"
                   selection
                   search
+                  onChange={handleChange}
+                />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label>Status:</label>
+                <Dropdown
+                  name="staus"
+                  options={statusOptions}
+                  placeholder="New"
+                  selection
+                  search
+                  onChange={handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Subject:</label>
+                <Input
+                  name="subject"
+                  placeholder="Technical Support"
                   onChange={handleChange}
                 />
               </Form.Field>

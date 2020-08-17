@@ -2,7 +2,19 @@ import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import { Helmet } from "react-helmet";
 import SideBar from "../components/SideBar";
-import { List, Button, Dropdown } from "semantic-ui-react";
+import UserSearchInput from "../components/UserSearchInput.js";
+import {
+  Input,
+  Dropdown,
+  Button,
+  Form,
+  Container,
+  Segment,
+  Modal,
+  Header,
+  Icon,
+  TextArea,
+} from "semantic-ui-react";
 import { useParams } from "react-router-dom";
 
 function Ticket() {
@@ -13,6 +25,8 @@ function Ticket() {
   // const [status, setStatus] = useState();
   // const [priority, setPriority] = useState();
   // const [selection, setType] = useState();
+
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     API.findOne(id)
@@ -30,6 +44,7 @@ function Ticket() {
     API.updateOne(ticket)
       .then(({ data }) => {
         console.log(data);
+        window.location = "/tickets";
       })
       .catch((error) => {
         console.log(error);
@@ -83,15 +98,131 @@ function Ticket() {
   return (
     <div>
       <Helmet>
-        <title>HALP - Ticket Page</title>
+        <title>HALP - Modify Ticket</title>
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
       <SideBar>
-        <List>
-          <List.Item>Subject: {ticket.subject}</List.Item>
-          {/* <List.Item>{ticket.createdBy.email}</List.Item> */}
-          {/* <List.Item>{ticket.updatedBy}</List.Item> */}
-          <List.Item>
+        <Container as={Segment}>
+          <Form>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label>Created By:</label>
+                <Input name="_id" value={ticket._id} disabled />
+              </Form.Field>
+              <Form.Field>
+                <label>Updated By:</label>
+                <Input name="updatedBy" value={ticket._id} disabled />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label>Assignee:</label>
+                <UserSearchInput setTicket={setTicket} />
+              </Form.Field>
+              <Form.Field>
+                <label>Description:</label>
+                <Modal
+                  closeIcon
+                  open={open}
+                  trigger={<Button>Edit</Button>}
+                  onClose={() => setOpen(false)}
+                  onOpen={() => setOpen(true)}
+                >
+                  <Header
+                    icon="archive"
+                    content="Type Description Of Problem"
+                  />
+                  <Modal.Content>
+                    <TextArea
+                      style={{ height: "100%", width: "100%" }}
+                      name="description"
+                      onChange={handleChange}
+                      placeholder={ticket.description}
+                    />
+                  </Modal.Content>
+                  <Modal.Actions>
+                    <Button color="red" onClick={() => setOpen(false)}>
+                      <Icon name="remove" /> Cancel
+                    </Button>
+                    <Button color="green" onClick={() => setOpen(false)}>
+                      <Icon name="checkmark" /> Save
+                    </Button>
+                  </Modal.Actions>
+                </Modal>
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label>Type:</label>
+                <Dropdown
+                  name="type"
+                  options={typeOptions}
+                  placeholder={ticket.type}
+                  selection
+                  search
+                  onChange={handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Priority Level:</label>
+                <Dropdown
+                  name="priorityLevel"
+                  options={priorityOptions}
+                  placeholder={`${ticket.priorityLevel}`}
+                  selection
+                  search
+                  onChange={handleChange}
+                />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label>Status:</label>
+                <Dropdown
+                  name="staus"
+                  options={statusOptions}
+                  placeholder={ticket.status}
+                  selection
+                  search
+                  onChange={handleChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Subject:</label>
+                <Input
+                  name="subject"
+                  placeholder={ticket.subject}
+                  onChange={handleChange}
+                />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group>
+              <Button onClick={handleSave} primary>
+                Save
+              </Button>
+              <Button onClick={handleDelete} inverted color="red">
+                Delete
+              </Button>
+              {/* <Button onClick={handleSave} primary>
+                Create
+              </Button>
+              <Button
+                onClick={() => {
+                  window.location = "/tickets";
+                }}
+                inverted
+                color="red"
+              >
+                Cancel
+              </Button> */}
+            </Form.Group>
+          </Form>
+        </Container>
+        {/* <List> */}
+        {/* <List.Item>Subject: {ticket.subject}</List.Item> */}
+        {/* <List.Item>{ticket.createdBy.email}</List.Item> */}
+        {/* <List.Item>{ticket.updatedBy}</List.Item> */}
+        {/* <List.Item>
             Status:
             <Dropdown
               name="status"
@@ -101,10 +232,10 @@ function Ticket() {
               search
               onChange={handleChange}
             />
-          </List.Item>
-          {/* create modal for description */}
-          <List.Item>Description: {ticket.description}</List.Item>
-          <List.Item>
+          </List.Item> */}
+        {/* create modal for description */}
+        {/* <List.Item>Description: {ticket.description}</List.Item> */}
+        {/* <List.Item>
             Priority Level:
             <Dropdown
               name="priorityLevel"
@@ -114,8 +245,8 @@ function Ticket() {
               search
               onChange={handleChange}
             />
-          </List.Item>
-          <List.Item>
+          </List.Item> */}
+        {/* <List.Item>
             Type:
             <Dropdown
               name="type"
@@ -125,14 +256,14 @@ function Ticket() {
               search
               onChange={handleChange}
             />
-          </List.Item>
-          <Button onClick={handleSave} primary>
+          </List.Item> */}
+        {/* <Button onClick={handleSave} primary>
             Save
           </Button>
           <Button onClick={handleDelete} inverted color="red">
             Delete
           </Button>
-        </List>
+        </List> */}
       </SideBar>
     </div>
   );

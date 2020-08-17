@@ -5,8 +5,22 @@ import { Helmet } from "react-helmet";
 import { Grid, Header, Image } from "semantic-ui-react";
 import API from "../utils/API.js";
 import logo from "../components/logo.png";
+<<<<<<< HEAD
 import "./login.css";
 
+=======
+// import { createMedia } from '@artsy/fresnel'
+import "./login.css";
+
+// const { MediaContextProvider, Media } = createMedia({
+//   breakpoints: {
+//     mobile: 0,
+//     tablet: 768,
+//     computer: 1024,
+//   },
+// });
+
+>>>>>>> 7a8951162529e66089c7e3ecd4f2bc5daad30961
 function Signup({ setLoggedin }) {
   const [userInformation, setUserInformation] = useState({
     email: null,

@@ -26,9 +26,6 @@ function SideBar({ children }) {
         <Menu.Item as={Link} to="/construction">
           Projects
         </Menu.Item>
-        <Menu.Item as={Link} to="/construction">
-          Create
-        </Menu.Item>
       </Sidebar>
       <Sidebar.Pusher dimmed={visible}>
         <Button onClick={() => setVisible(true)} />

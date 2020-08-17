@@ -17,13 +17,10 @@ import {
 } from "semantic-ui-react";
 import { useParams } from "react-router-dom";
 
-function Ticket(userInfo) {
+function Ticket() {
   const { id } = useParams();
   // const [visible, setVisible] = useState(false);
-  const [ticket, setTicket] = useState({
-    createdBy: [userInfo._id],
-    updatedBy: [userInfo.id],
-  });
+  const [ticket, setTicket] = useState([]);
   // const [query, setQuery] = useState({});
   // const [status, setStatus] = useState();
   // const [priority, setPriority] = useState();

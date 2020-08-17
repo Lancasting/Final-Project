@@ -9,7 +9,9 @@ function TicketSummary({ _id, priorityLevel, type, status }) {
         <Grid>
           <Grid.Column mobile={16} tablet={8} computer={4}>
             <Header as="h3" content="Ticket:" />
-            <Link to={`/tickets/${_id}`}>{_id}</Link>
+            <p>
+              <Link to={`/tickets/${_id}`}>{_id}</Link>
+            </p>
           </Grid.Column>
           <Grid.Column mobile={16} tablet={8} computer={4}>
             <Header as="h3" content="Status:" />

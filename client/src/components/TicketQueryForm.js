@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Dropdown, Segment, Input } from "semantic-ui-react";
 
 const options = [
-  { key: 0, text: "", value: "" },
+  { key: 0, text: "Show All", value: "" },
   { key: 1, text: "Status", value: "status" },
   { key: 2, text: "Ticket Number", value: "_id" },
   { key: 3, text: "Type", value: "type" },

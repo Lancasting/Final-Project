@@ -27,11 +27,6 @@ function App() {
     API.checkUser()
       .then(({ data }) => {
         setUserInfo(data);
-        if (data) {
-          setLoggedin(true);
-          return;
-        }
-        setLoggedin(false);
       })
       .catch(() => {
         console.log("Could not Verify");

@@ -5,20 +5,17 @@ module.exports = {
     const newAccount = new User(body);
     newAccount.hashPassword();
     User.create(newAccount)
-      .then((result) => {
-        res.json(result);
-        res.redirect("/login");
+      .then(() => {
+        res.redirect(307, "/user/login")
       })
       .catch((error) => {
         res.json(error);
       });
   },
   find({ body }, res) {
-    const query = body[0];
-    const where = body[1];
-    User.find({ [query]: { $regex: where } })
+    User.find({ [body[0]]: { $regex: body[1] } })
       .then((collections) => {
-        res.json(collections);
+        res.json(collections.map(user => ({ email: user.email, _id: user._id})));
       })
       .catch((error) => {
         res.json(error);

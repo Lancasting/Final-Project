@@ -20,13 +20,17 @@ import "./App.css";
 document.body.style.background = "#b8f5d4";
 
 function App() {
-  const [loggedin, setLoggedin] = useState();
+  const [loggedin, setLoggedin] = useState(false);
   const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
     API.checkUser()
-      .then(({ data }) => {
-        setUserInfo(data);
+      .then((result) => {
+        setUserInfo(result.data);
+        if (result.data && !loggedin) {
+          setUserInfo(result.data);
+          setLoggedin(true);
+        }
       })
       .catch(() => {
         console.log("Could not Verify");

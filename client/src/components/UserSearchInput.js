@@ -3,19 +3,21 @@ import { Input } from "semantic-ui-react";
 import useDebounce from "../utils/useDebouncedValue.js";
 import API from "../utils/API.js";
 
-function UserSearchInput({ where, setItem }) {
+function UserSearchInput({ setTicket }) {
   const [users, setUsers] = useState([]);
   const [query, setQuery] = useState();
 
   const debouncedSearchTerm = useDebounce(query, 2000);
 
   useEffect(() => {
+    console.log(users);
     if (!query) {
       return;
     }
     if (debouncedSearchTerm) {
-      API.findUsersBy([where, query])
+      API.findUsersBy(["email", query])
         .then(({ data }) => {
+          console.log(data);
           setUsers(data);
         })
         .catch((err) => {
@@ -25,13 +27,19 @@ function UserSearchInput({ where, setItem }) {
   }, [query]);
 
   const handleChange = ({ target }) => {
-    // setItem(target.value);
     setQuery(target.value);
+    setTicket((prevState) => {
+      return {
+        ...prevState,
+        assignees: target.value,
+      };
+    });
   };
 
   return (
     <>
       <Input
+        name="email"
         onChange={handleChange}
         list="users"
         placeholder="Search User..."

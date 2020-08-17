@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API.js";
 import SideBar from "../components/SideBar.js";
-import UserSearchInput from "../components/UserSearchInput.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
 import TicketSummary from "../components/TicketSummary.js";
 import { Helmet } from "react-helmet";
@@ -38,7 +37,6 @@ function TicketQuery() {
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
       <SideBar>
-        <UserSearchInput where="email" />
         <TicketQueryForm
           selection={selection}
           setSelection={setSelection}

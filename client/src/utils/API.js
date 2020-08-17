@@ -19,6 +19,9 @@ export default {
   getAllTickets(ticketInfo) {
     return axios.post("/search", ticketInfo);
   },
+  createTicket(ticketInfo) {
+    return axios.post("/tickets/create", ticketInfo);
+  },
   findOne(id) {
     return axios.get(`/tickets/${id}`);
   },

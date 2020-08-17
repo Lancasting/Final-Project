@@ -6,6 +6,7 @@ import { Grid, Header, Image } from "semantic-ui-react";
 import API from "../utils/API.js";
 import logo from "../components/logo.png";
 import { createMedia } from '@artsy/fresnel'
+import "./login.css";
 
 
 const { MediaContextProvider, Media } = createMedia({

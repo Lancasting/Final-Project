@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Button, Container, Icon, Header } from "semantic-ui-react";
+import "./underconstruction.css";
 
 function UnderConstruction() {
   return (

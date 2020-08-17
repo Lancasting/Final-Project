@@ -21,7 +21,7 @@ function Welcome() {
             color: "#4d3ce5",
             fontWeight: "bold",
             marginBottom: 0,
-            marginTop: "3em",
+            marginTop: "1em",
           }}
         />
         <Header
@@ -30,7 +30,7 @@ function Welcome() {
           inverted
           style={{
             fontSize: "2em",
-            color: "white",
+            color: "blue",
             fontWeight: "bold",
             marginTop: "1.5em",
           }}
@@ -43,11 +43,11 @@ function Welcome() {
       <Container textAlign="center">
         <Header
           as="h2"
-          content="Execution is Doing Things Right"
+          content="Execution is Doing Things Right!"
           inverted
           style={{
-            fontSize: "3em",
-            color: "white",
+            fontSize: "2em",
+            color: "blue",
             fontWeight: "normal",
             marginTop: "2em",
           }}

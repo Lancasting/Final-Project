@@ -13,27 +13,40 @@ import {
   Modal,
   Header,
   Icon,
-  TextArea,
 } from "semantic-ui-react";
-import { useParams } from "react-router-dom";
+import { useParams, withRouter } from "react-router-dom";
 
-function Ticket() {
+const disabledInput = {
+  pointerEvents: "none",
+};
+
+function Ticket({ userInfo, history }) {
   const { id } = useParams();
-  // const { email } = useParams();
-  // const [visible, setVisible] = useState(false);
-  const [ticket, setTicket] = useState([]);
-  // const [query, setQuery] = useState({});
-  // const [status, setStatus] = useState();
-  // const [priority, setPriority] = useState();
-  // const [selection, setType] = useState();
+  const [prevUpdater, setPrevUpdater] = useState("Loading");
+  const [ticket, setTicket] = useState({
+    assignedTo: { _id: "Loading", email: "Loading" },
+    createdBy: { _id: "Loading", email: "Loading" },
+    description: "Loading",
+    priorityLevel: 4,
+    status: "Loading",
+    subject: "Loading",
+    type: "Loading",
+    updatedBy: "Loading",
+    updatedDate: "Loading",
+    createdDate: "Loading",
+  });
 
   const [open, setOpen] = useState(false);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     API.findOne(id)
       .then(({ data }) => {
-        console.log(data);
-        setTicket(data);
+        setTicket({
+          ...data,
+          updatedBy: userInfo._id,
+        });
+        setPrevUpdater(data.updatedBy.email);
       })
       .catch((error) => {
         console.log(error);
@@ -42,10 +55,30 @@ function Ticket() {
 
   const handleSave = (event) => {
     event.preventDefault();
+    if (ticket.description.length < 6) {
+      return setErrors((prevState) => {
+        return {
+          ...prevState,
+          description: "Description Must Be Greater Than 6 Characters",
+        };
+      });
+    }
+    setTicket((prevState) => {
+      return {
+        ...prevState,
+        updatedBy: userInfo._id,
+      };
+    });
+    console.log("Updating");
+    console.log(ticket);
+    console.log("Done");
     API.updateOne(ticket)
       .then(({ data }) => {
-        console.log(data);
-        window.location = "/tickets";
+        if (data.reason) {
+          setErrors({ assigneeError: "Please Enter Valid Assignee" });
+        }
+        setErrors({});
+        history.push("/tickets");
       })
       .catch((error) => {
         console.log(error);
@@ -64,8 +97,7 @@ function Ticket() {
   const handleDelete = () => {
     API.deleteOne(ticket)
       .then(() => {
-        console.log("Successfully Deleted");
-        window.location = "/tickets";
+        history.push("/tickets");
       })
       .catch((error) => {
         console.log(error);
@@ -104,40 +136,67 @@ function Ticket() {
       </Helmet>
       <SideBar>
         <Container as={Segment}>
+          <Header
+            as="h1"
+            content={`Ticket: ${ticket._id}`}
+            textAlign="center"
+          />
           <Form>
             <Form.Group widths="equal">
               <Form.Field>
+                <label>Created Date</label>
+                <Input
+                  style={disabledInput}
+                  name="_id"
+                  value={ticket.createdDate}
+                />
+              </Form.Field>
+              <Form.Field>
                 <label>Updated Date</label>
-                <Input name="_id" value={ticket.updatedDate} disabled />
-              </Form.Field>
-              <Form.Field>
-                <label>Created By:</label>
-                <Input name="_id" value={ticket._id} disabled />
-              </Form.Field>
-              <Form.Field>
-                <label>Updated By:</label>
-                <Input name="updatedBy" value={ticket._id} disabled />
+                <Input
+                  style={disabledInput}
+                  name="_id"
+                  value={ticket.updatedDate}
+                />
               </Form.Field>
             </Form.Group>
             <Form.Group widths="equal">
               <Form.Field>
-                <label>Current Assignee</label>
+                <label>Created By:</label>
                 <Input
-                  name="Current Assignee"
-                  value={ticket.assignees}
-                  disabled
+                  style={disabledInput}
+                  name="createdBy"
+                  value={ticket.createdBy.email}
                 />
               </Form.Field>
               <Form.Field>
-                <label>Add Assignee:</label>
-                <UserSearchInput setTicket={setTicket} />
+                <label>Updated By:</label>
+                <Input
+                  style={disabledInput}
+                  name="updatedBy"
+                  value={prevUpdater}
+                />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label>assigned To:</label>
+                <UserSearchInput
+                  assigneeError={errors.assigneeError}
+                  placeholder={ticket.assignedTo.email}
+                  setTicket={setTicket}
+                />
               </Form.Field>
               <Form.Field>
                 <label>Description:</label>
                 <Modal
                   closeIcon
                   open={open}
-                  trigger={<Button>Edit</Button>}
+                  trigger={
+                    <Button color={errors.description ? "red" : "grey"}>
+                      Edit
+                    </Button>
+                  }
                   onClose={() => setOpen(false)}
                   onOpen={() => setOpen(true)}
                 >
@@ -146,7 +205,12 @@ function Ticket() {
                     content="Type Description Of Problem"
                   />
                   <Modal.Content>
-                    <TextArea
+                    <Form.TextArea
+                      error={
+                        errors.description
+                          ? { content: errors.description, color: "red" }
+                          : false
+                      }
                       style={{ height: "100%", width: "100%" }}
                       name="description"
                       onChange={handleChange}
@@ -172,7 +236,6 @@ function Ticket() {
                   options={typeOptions}
                   placeholder={ticket.type}
                   selection
-                  search
                   onChange={handleChange}
                 />
               </Form.Field>
@@ -183,7 +246,6 @@ function Ticket() {
                   options={priorityOptions}
                   placeholder={`${ticket.priorityLevel}`}
                   selection
-                  search
                   onChange={handleChange}
                 />
               </Form.Field>
@@ -192,11 +254,10 @@ function Ticket() {
               <Form.Field>
                 <label>Status:</label>
                 <Dropdown
-                  name="staus"
+                  name="status"
                   options={statusOptions}
                   placeholder={ticket.status}
                   selection
-                  search
                   onChange={handleChange}
                 />
               </Form.Field>
@@ -216,70 +277,12 @@ function Ticket() {
               <Button onClick={handleDelete} inverted color="red">
                 Delete
               </Button>
-              {/* <Button onClick={handleSave} primary>
-                Create
-              </Button>
-              <Button
-                onClick={() => {
-                  window.location = "/tickets";
-                }}
-                inverted
-                color="red"
-              >
-                Cancel
-              </Button> */}
             </Form.Group>
           </Form>
         </Container>
-        {/* <List> */}
-        {/* <List.Item>Subject: {ticket.subject}</List.Item> */}
-        {/* <List.Item>{ticket.createdBy.email}</List.Item> */}
-        {/* <List.Item>{ticket.updatedBy}</List.Item> */}
-        {/* <List.Item>
-            Status:
-            <Dropdown
-              name="status"
-              options={statusOptions}
-              placeholder={ticket.status}
-              selection
-              search
-              onChange={handleChange}
-            />
-          </List.Item> */}
-        {/* create modal for description */}
-        {/* <List.Item>Description: {ticket.description}</List.Item> */}
-        {/* <List.Item>
-            Priority Level:
-            <Dropdown
-              name="priorityLevel"
-              options={priorityOptions}
-              placeholder={`${ticket.priorityLevel}`}
-              selection
-              search
-              onChange={handleChange}
-            />
-          </List.Item> */}
-        {/* <List.Item>
-            Type:
-            <Dropdown
-              name="type"
-              options={typeOptions}
-              placeholder={ticket.type}
-              selection
-              search
-              onChange={handleChange}
-            />
-          </List.Item> */}
-        {/* <Button onClick={handleSave} primary>
-            Save
-          </Button>
-          <Button onClick={handleDelete} inverted color="red">
-            Delete
-          </Button>
-        </List> */}
       </SideBar>
     </div>
   );
 }
 
-export default Ticket;
+export default withRouter(Ticket);

@@ -8,6 +8,7 @@ const dateObj = {
 
 const TicketSchema = new Schema({
   updatedDate: dateObj,
+  createdDate: dateObj,
   subject: {
     type: String,
     trim: true,
@@ -24,6 +25,7 @@ const TicketSchema = new Schema({
   description: {
     type: String,
     trim: true,
+    default: "Need Assistance With My Issue, Please Check Subject Line",
     validate: [
       ({ length }) => length >= 5,
       "Please enter a description of your issue",
@@ -39,13 +41,12 @@ const TicketSchema = new Schema({
   },
   type: {
     type: String,
+    default: "Hardware",
   },
-  assignees: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
-  ],
+  assignedTo: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 const Ticket = mongoose.model("Ticket", TicketSchema);

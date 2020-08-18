@@ -12,7 +12,6 @@ passport.use(
     },
     //Check login information
     (email, password, done) => {
-      console.log(`Pass: ${password}`);
       //Query email from database
       db.User.find({ email: email }).then((user) => {
         //Check for user

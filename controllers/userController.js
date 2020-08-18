@@ -9,7 +9,7 @@ module.exports = {
         res.redirect(307, "/user/login")
       })
       .catch((error) => {
-        res.json(error);
+        res.status(401).json(error);
       });
   },
   find({ body }, res) {

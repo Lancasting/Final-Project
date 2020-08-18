@@ -11,7 +11,7 @@ import {
   Modal,
   Header,
   Icon,
-  TextArea,
+  Message,
 } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
 import Helmet from "react-helmet";
@@ -21,9 +21,10 @@ function Create({ userInfo, history }) {
   const [ticket, setTicket] = useState({
     createdBy: [userInfo._id],
     updatedBy: [userInfo._id],
-    assignees: [userInfo._id],
+    assignedTo: [userInfo._id],
     subject: "Technical Support",
   });
+  const [errors, setErrors] = useState({});
   const [open, setOpen] = useState(false);
 
   const statusOptions = [
@@ -56,6 +57,10 @@ function Create({ userInfo, history }) {
     API.createTicket(ticket)
       .then(({ data }) => {
         console.log(data);
+        if (data.errors) {
+          console.log(data.errors);
+          return setErrors(data.errors);
+        }
         history.push(`/tickets/${data._id}`);
       })
       .catch((error) => {
@@ -86,24 +91,39 @@ function Create({ userInfo, history }) {
             <Form.Group widths="equal">
               <Form.Field>
                 <label>Created By:</label>
-                <Input name="_id" value={userInfo._id} disabled />
+                <Input
+                  style={{ pointerEvents: "none" }}
+                  name="_id"
+                  value={userInfo.email}
+                />
               </Form.Field>
               <Form.Field>
                 <label>Updated By:</label>
-                <Input name="updatedBy" value={userInfo._id} disabled />
+                <Input
+                  style={{ pointerEvents: "none" }}
+                  name="updatedBy"
+                  value={userInfo.email}
+                />
               </Form.Field>
             </Form.Group>
             <Form.Group widths="equal">
               <Form.Field>
-                <label>Assignee:</label>
-                <UserSearchInput setTicket={setTicket} />
+                <label>Assigned To:</label>
+                <UserSearchInput
+                  assigneeError={errors.assignedTo}
+                  setTicket={setTicket}
+                />
               </Form.Field>
               <Form.Field>
                 <label>Description:</label>
                 <Modal
                   closeIcon
                   open={open}
-                  trigger={<Button>Edit</Button>}
+                  trigger={
+                    <Button color={errors.description ? "red" : "grey"}>
+                      Edit
+                    </Button>
+                  }
                   onClose={() => setOpen(false)}
                   onOpen={() => setOpen(true)}
                 >
@@ -112,11 +132,20 @@ function Create({ userInfo, history }) {
                     content="Type Description Of Problem"
                   />
                   <Modal.Content>
-                    <TextArea
+                    <Form.TextArea
                       style={{ height: "100%", width: "100%" }}
                       name="description"
                       onChange={handleChange}
                       placeholder="Tell us more"
+                      //infinite prettier issue
+                      error={
+                        errors.description
+                          ? {
+                            content: errors.description.properties.message,
+                            color: "red",
+                          }
+                          : false
+                      }
                     />
                   </Modal.Content>
                   <Modal.Actions>
@@ -138,7 +167,6 @@ function Create({ userInfo, history }) {
                   options={typeOptions}
                   placeholder="Hardware"
                   selection
-                  search
                   onChange={handleChange}
                 />
               </Form.Field>
@@ -149,7 +177,6 @@ function Create({ userInfo, history }) {
                   options={priorityOptions}
                   placeholder="4"
                   selection
-                  search
                   onChange={handleChange}
                 />
               </Form.Field>
@@ -162,7 +189,6 @@ function Create({ userInfo, history }) {
                   options={statusOptions}
                   placeholder="New"
                   selection
-                  search
                   onChange={handleChange}
                 />
               </Form.Field>
@@ -175,13 +201,20 @@ function Create({ userInfo, history }) {
                 />
               </Form.Field>
             </Form.Group>
+            <Form.Group widths="equal">
+              <Message
+                error
+                header="Action Forbidden"
+                content="You can only sign up for an account once with a given e-mail address."
+              />
+            </Form.Group>
             <Form.Group>
               <Button onClick={handleSave} primary>
                 Create
               </Button>
               <Button
                 onClick={() => {
-                  window.location = "/tickets";
+                  history.push("/tickets");
                 }}
                 inverted
                 color="red"

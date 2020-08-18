@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Sidebar, Menu, Button } from "semantic-ui-react";
+import { Sidebar, Menu, Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 function SideBar({ children }) {
@@ -29,7 +29,9 @@ function SideBar({ children }) {
         </Menu.Item>
       </Sidebar>
       <Sidebar.Pusher dimmed={visible}>
-        <Button onClick={() => setVisible(true)} />
+        <Button icon onClick={() => setVisible(true)}>
+          <Icon name="world" /> 
+        </Button>
         {children}
       </Sidebar.Pusher>
     </Sidebar.Pushable>

@@ -14,7 +14,7 @@ module.exports = {
   getOne(req, res) {
     Ticket.findOne({ _id: req.params.id })
       .populate({ path: "createdBy", select: ["email", "_id"] })
-      .populate({ path: "assignees", select: ["email", "_id"] })
+      .populate({ path: "assignedTo", select: ["email", "_id"] })
       .populate({ path: "updatedBy", select: ["email", "_id"] })
       .then((ticket) => {
         res.json(ticket);
@@ -23,6 +23,9 @@ module.exports = {
   updateOne(req, res) {
     Ticket.findByIdAndUpdate(req.body._id, req.body).then((ticket) => {
       res.json(ticket);
+    })
+    .catch((error) => {
+      res.json(error);
     });
   },
   deleteOne(req, res) {

@@ -85,8 +85,8 @@ function Create({ userInfo, history }) {
           content="Create Ticket Page Of The HALP Website"
         />
       </Helmet>
-      <SideBar>
-        <Container as={Segment}>
+      <Container as={Segment}>
+        <SideBar>
           <Form>
             <Form.Group widths="equal">
               <Form.Field>
@@ -223,8 +223,8 @@ function Create({ userInfo, history }) {
               </Button>
             </Form.Group>
           </Form>
-        </Container>
-      </SideBar>
+        </SideBar>
+      </Container>
     </>
   );
 }

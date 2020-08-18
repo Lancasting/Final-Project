@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, Segment, Message } from "semantic-ui-react";
+import { Button, Form, Segment, Message, Header } from "semantic-ui-react";
 
 function AuthenticationForm({
   formSubmit,
@@ -10,51 +10,54 @@ function AuthenticationForm({
   page,
 }) {
   return (
-    <Form size="large" onSubmit={formSubmit}>
-      <Segment stacked>
-        <Form.Input
-          onChange={formChange}
-          name="email"
-          fluid
-          icon="user"
-          iconPosition="left"
-          placeholder="Your E-mail address"
-          error={emailError}
-        />
-        <Form.Input
-          onChange={formChange}
-          name="password"
-          fluid
-          icon="lock"
-          iconPosition="left"
-          placeholder="Create Password"
-          type="password"
-          error={passwordError}
-        />
-        <Button
-          color="teal"
-          fluid
-          size="large"
-          type="submit"
-          content={page === "login" ? "Login To Account" : "Signup For Account"}
-        />
-        {page === "login" ? (
-          <Message
-            error={loggedInError}
-            color="red"
-            header="Incorrect Username Or Password"
-            content="Please Enter A Correct Username Or Password"
+    <>
+      <Header as="h1" content="HALP Login" textAlign="center" />
+      <Form size="large" onSubmit={formSubmit}>
+        <Segment stacked>
+          <Form.Input
+            onChange={formChange}
+            name="email"
+            fluid
+            icon="user"
+            iconPosition="left"
+            placeholder="Your E-mail address"
+            error={emailError}
           />
-        ) : (
-          <Message
-            error={loggedInError}
-            color="red"
-            header="Please Enter Valid Email and Password"
-            content="password must be over 6 characters. Email Could Already be used"
+          <Form.Input
+            onChange={formChange}
+            name="password"
+            fluid
+            icon="lock"
+            iconPosition="left"
+            placeholder="Create Password"
+            type="password"
+            error={passwordError}
           />
-        )}
-      </Segment>
-    </Form>
+          <Button
+            color="teal"
+            fluid
+            size="large"
+            type="submit"
+            content={page === "login" ? "Login" : "Signup"}
+          />
+          {page === "login" ? (
+            <Message
+              error={loggedInError}
+              color="red"
+              header="Incorrect Username Or Password"
+              content="Please Enter A Correct Username Or Password"
+            />
+          ) : (
+            <Message
+              error={loggedInError}
+              color="red"
+              header="Please Enter Valid Email and Password"
+              content="password must be over 6 characters. Email Could Already be used"
+            />
+          )}
+        </Segment>
+      </Form>
+    </>
   );
 }
 

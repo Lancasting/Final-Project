@@ -4,8 +4,9 @@ const userController = require("../controllers/userController");
 
 router.post("/user/login", passport.authenticate("local"), (req, res) => {
   if (req.user) {
-    res.json(req.user);
+    return res.json(req.user);
   }
+  res.json(req.user);
 });
 
 router.get("/signout", (req, res) => {

@@ -8,27 +8,27 @@ mongoose.connect(
 const ticketsSeed = [
   {
     subject: "Help Desk",
-    createdBy: mongoose.Types.ObjectId("5f35eae56f3a9e33dc50969f"),
-    updatedBy: mongoose.Types.ObjectId("5f35eae56f3a9e33dc50969f"),
+    createdBy: mongoose.Types.ObjectId("5f3a2b6f2644183e8c13011d"),
+    updatedBy: mongoose.Types.ObjectId("5f3a2b6f2644183e8c13011d"),
     description: "Help! My Computer Is Broke!",
     type: "Computer",
-    // assignees: ["ObjectId('5f333c5bcab34601840232fa')"],
+    // assignees: ["ObjectId('5f3a2b6f2644183e8c13011d')"],
   },
   {
     subject: "Network",
-    createdBy: mongoose.Types.ObjectId("5f35eae56f3a9e33dc50969f"),
-    updatedBy: mongoose.Types.ObjectId("5f35eae56f3a9e33dc50969f"),
+    createdBy: mongoose.Types.ObjectId("5f3a2b6f2644183e8c13011d"),
+    updatedBy: mongoose.Types.ObjectId("5f3a2b6f2644183e8c13011d"),
     description: "Help! My Internet Is Broke!",
     type: "Network",
-    // assignees: ["ObjectId('5f333c5bcab34601840232fa')"],
+    // assignees: ["ObjectId('5f3a2b6f2644183e8c13011d')"],
   },
   {
     subject: "Software",
-    createdBy: mongoose.Types.ObjectId("5f35eae56f3a9e33dc50969f"),
-    updatedBy: mongoose.Types.ObjectId("5f35eae56f3a9e33dc50969f"),
+    createdBy: mongoose.Types.ObjectId("5f3a2b6f2644183e8c13011d"),
+    updatedBy: mongoose.Types.ObjectId("5f3a2b6f2644183e8c13011d"),
     description: "Help! My Software Is Broke!",
     type: "Software",
-    // assignees: ["ObjectId('5f333c5bcab34601840232fa')"],
+    // assignees: ["ObjectId('5f3a2b6f2644183e8c13011d')"],
   },
 ];
 
@@ -42,30 +42,3 @@ db.Ticket.deleteMany({})
     console.error(error);
     process.exit(1);
   });
-
-// const userAccountSeed = [
-//   {
-//     username: "Ikemous",
-//     email: "ikemous@ikemous.com",
-//     password: "secret",
-//     firstname: "ike",
-//     lastname: "ikelast",
-//   },
-// ];
-
-// const users = userAccountSeed.map((account) => {
-//   const newAccount = new db.Accounts(account);
-//   newAccount.beforeCreate();
-//   return newAccount;
-// });
-
-// db.Accounts.deleteMany({})
-//   .then(() => db.Accounts.insertMany(users))
-//   .then((data) => {
-//     console.log(" records inserted!");
-//     process.exit(0);
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//     process.exit(1);
-//   });

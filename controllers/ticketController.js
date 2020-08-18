@@ -21,14 +21,11 @@ module.exports = {
       });
   },
   updateOne(req, res) {
-    console.log(req.body);
     Ticket.findByIdAndUpdate(req.body._id, req.body).then((ticket) => {
       res.json(ticket);
     });
   },
   deleteOne(req, res) {
-    console.log(req.params);
-    console.log(req.body);
     Ticket.findByIdAndDelete(req.body._id, req.body).then((ticket) => {
       res.json(ticket);
     });

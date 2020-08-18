@@ -7,7 +7,7 @@ function UserSearchInput({ setTicket }) {
   const [users, setUsers] = useState([]);
   const [query, setQuery] = useState();
 
-  const debouncedSearchTerm = useDebounce(query, 2000);
+  const debouncedSearchTerm = useDebounce(query, 500);
 
   useEffect(() => {
     console.log(users);

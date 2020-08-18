@@ -1,17 +1,17 @@
 import React from "react";
-import { Form, Dropdown, Segment, Input } from "semantic-ui-react";
+import { Form, Dropdown, Segment, Input, Container } from "semantic-ui-react";
 
 const options = [
-  { key: 0, text: "", value: "" },
+  { key: 0, text: "Show All", value: "" },
   { key: 1, text: "Status", value: "status" },
   { key: 2, text: "Ticket Number", value: "_id" },
-  { key: 3, text: "Created By", value: "createdBy" },
+  { key: 3, text: "Type", value: "type" },
   { key: 4, text: "Priority Level", value: "priorityLevel" },
 ];
 
 function TicketQueryForm({ setSelection, setUserInput, formSubmit }) {
   return (
-    <Segment>
+    <Segment style={{ color: "black", margin: "100px", padding: "300px" }}>
       <Form onSubmit={formSubmit}>
         <Form.Group inline>
           <Form.Field>

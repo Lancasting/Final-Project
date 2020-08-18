@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Input } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 import useDebounce from "../utils/useDebouncedValue.js";
 import API from "../utils/API.js";
 
-function UserSearchInput({ setTicket }) {
+function UserSearchInput({ setTicket, assigneeError }) {
   const [users, setUsers] = useState([]);
   const [query, setQuery] = useState();
 
@@ -17,7 +17,6 @@ function UserSearchInput({ setTicket }) {
     if (debouncedSearchTerm) {
       API.findUsersBy(["email", query])
         .then(({ data }) => {
-          console.log(data);
           setUsers(data);
         })
         .catch((err) => {
@@ -31,18 +30,19 @@ function UserSearchInput({ setTicket }) {
     setTicket((prevState) => {
       return {
         ...prevState,
-        assignees: target.value,
+        assignedTo: target.value,
       };
     });
   };
 
   return (
     <>
-      <Input
+      <Form.Input
         name="email"
         onChange={handleChange}
         list="users"
         placeholder="Search User..."
+        error={assigneeError ? "Please Enter A Valid User" : false}
       />
       <datalist id="users">
         {users.map((user) => (

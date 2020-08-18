@@ -19,6 +19,7 @@ import { useParams } from "react-router-dom";
 
 function Ticket() {
   const { id } = useParams();
+  // const { email } = useParams();
   // const [visible, setVisible] = useState(false);
   const [ticket, setTicket] = useState([]);
   // const [query, setQuery] = useState({});
@@ -58,7 +59,7 @@ function Ticket() {
       };
     });
   };
-  useEffect(() => console.log(ticket), [ticket]);
+  // useEffect(() => console.log(ticket), [ticket]);
 
   const handleDelete = () => {
     API.deleteOne(ticket)
@@ -106,6 +107,10 @@ function Ticket() {
           <Form>
             <Form.Group widths="equal">
               <Form.Field>
+                <label>Updated Date</label>
+                <Input name="_id" value={ticket.updatedDate} disabled />
+              </Form.Field>
+              <Form.Field>
                 <label>Created By:</label>
                 <Input name="_id" value={ticket._id} disabled />
               </Form.Field>
@@ -116,7 +121,15 @@ function Ticket() {
             </Form.Group>
             <Form.Group widths="equal">
               <Form.Field>
-                <label>Assignee:</label>
+                <label>Current Assignee</label>
+                <Input
+                  name="Current Assignee"
+                  value={ticket.assignees}
+                  disabled
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Add Assignee:</label>
                 <UserSearchInput setTicket={setTicket} />
               </Form.Field>
               <Form.Field>

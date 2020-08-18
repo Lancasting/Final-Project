@@ -60,7 +60,11 @@ function App() {
           {!loggedin ? <Redirect to="/login" /> : <TicketQuery />}
         </Route>
         <Route exact path="/tickets/:id">
-          {!loggedin ? <Redirect to="/login" /> : <Ticket />}
+          {!loggedin ? (
+            <Redirect to="/login" />
+          ) : (
+            <Ticket userInfo={userInfo} />
+          )}
         </Route>
         <Route exact path="/create">
           {!loggedin ? (

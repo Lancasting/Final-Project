@@ -11,9 +11,17 @@ const options = [
 
 function TicketQueryForm({ setSelection, setUserInput, formSubmit }) {
   return (
-    <Segment>
+    <Segment
+      style={{
+        color: "white",
+        height: "600px",
+        display: "flex",
+        marginLeft: "150px",
+        marginRight: "150px",
+      }}
+    >
       <Form onSubmit={formSubmit}>
-        <Form.Group inline>
+        <Form.Group style={{ margin: "0px", padding: "0" }}>
           <Form.Field>
             <Dropdown
               options={options}

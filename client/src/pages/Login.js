@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import AuthenticationForm from "../components/AuthenticationForm.js";
 import API from "../utils/API.js";
 import { Helmet } from "react-helmet";
-import { Grid, Header, Image } from "semantic-ui-react";
-import logo from "../components/logo.png";
+import { Container } from "semantic-ui-react";
 import "./login.css";
 
 function Login({ setLoggedin }) {
@@ -51,25 +50,25 @@ function Login({ setLoggedin }) {
         <title>HALP - Login Page</title>
         <meta name="description" content="Login Page Of The HALP Website" />
       </Helmet>
-      <Grid
-        textAlign="center"
-        style={{ height: "125vh" }}
-        verticalAlign="middle"
+      <Container
+        style={{
+          maxWidth: "600px",
+          marginRight: "auto",
+          marginLeft: "auto",
+          height: "100%",
+        }}
+        centered
+        basic
       >
-        <Grid.Column style={{ maxWidth: 450, marginTop: "-300px" }}>
-          <Header as="h2" color="blue" textAlign="center">
-            <Image src={logo} width={100} /> Login to your account
-          </Header>
-          <AuthenticationForm
-            formChange={formChange}
-            formSubmit={formSubmit}
-            emailError={emailError}
-            passwordError={passwordError}
-            loggedInError={loggedInError}
-            page="login"
-          />
-        </Grid.Column>
-      </Grid>
+        <AuthenticationForm
+          formChange={formChange}
+          formSubmit={formSubmit}
+          emailError={emailError}
+          passwordError={passwordError}
+          loggedInError={loggedInError}
+          page="login"
+        />
+      </Container>
     </>
   );
 }

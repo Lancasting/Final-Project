@@ -4,7 +4,7 @@ import SideBar from "../components/SideBar.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
 import TicketSummary from "../components/TicketSummary.js";
 import { Helmet } from "react-helmet";
-import { Container } from "semantic-ui-react";
+import { Container, Segment } from "semantic-ui-react";
 
 function TicketQuery() {
   // state of query
@@ -40,23 +40,25 @@ function TicketQuery() {
         <title>HALP - Ticket Page</title>
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
-      <SideBar>
-        <TicketQueryForm
-          current={selection}
-          setSelection={setSelection}
-          setUserInput={setUserInput}
-          formSubmit={formSubmit}
-        />
-        {tickets.length === 0 ? (
-          <h1>No Tickets Found</h1>
-        ) : (
-          <Container fluid>
-            {tickets.map((ticket) => (
-              <TicketSummary key={ticket._id} {...ticket} />
-            ))}
-          </Container>
-        )}
-      </SideBar>
+      <Container as={Segment}>
+        <SideBar>
+          <TicketQueryForm
+            current={selection}
+            setSelection={setSelection}
+            setUserInput={setUserInput}
+            formSubmit={formSubmit}
+          />
+          {tickets.length === 0 ? (
+            <h1>No Tickets Found</h1>
+          ) : (
+            <Segment basic>
+              {tickets.map((ticket) => (
+                <TicketSummary key={ticket._id} {...ticket} />
+              ))}
+            </Segment>
+          )}
+        </SideBar>
+      </Container>
     </>
   );
 }

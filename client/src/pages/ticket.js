@@ -134,8 +134,8 @@ function Ticket({ userInfo, history }) {
         <title>HALP - Modify Ticket</title>
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
-      <SideBar>
-        <Container as={Segment}>
+      <Container as={Segment}>
+        <SideBar>
           <Header
             as="h1"
             content={`Ticket: ${ticket._id}`}
@@ -279,8 +279,8 @@ function Ticket({ userInfo, history }) {
               </Button>
             </Form.Group>
           </Form>
-        </Container>
-      </SideBar>
+        </SideBar>
+      </Container>
     </div>
   );
 }

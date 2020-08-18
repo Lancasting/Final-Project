@@ -40,16 +40,8 @@ function TicketQuery() {
         <title>HALP - Ticket Page</title>
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
-      <SideBar>
-        <Segment
-          style={{
-            color: "white",
-            height: "600px",
-            display: "flex",
-            marginLeft: "150px",
-            marginRight: "150px",
-          }}
-        >
+      <Container as={Segment}>
+        <SideBar>
           <TicketQueryForm
             current={selection}
             setSelection={setSelection}
@@ -59,14 +51,14 @@ function TicketQuery() {
           {tickets.length === 0 ? (
             <h1>No Tickets Found</h1>
           ) : (
-            <Container fluid>
+            <Segment basic>
               {tickets.map((ticket) => (
                 <TicketSummary key={ticket._id} {...ticket} />
               ))}
-            </Container>
+            </Segment>
           )}
-        </Segment>
-      </SideBar>
+        </SideBar>
+      </Container>
     </>
   );
 }

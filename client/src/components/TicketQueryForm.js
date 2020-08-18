@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Dropdown, Segment, Input } from "semantic-ui-react";
+import { Form, Dropdown, Input } from "semantic-ui-react";
 
 const options = [
   { key: 0, text: "Show All", value: "" },

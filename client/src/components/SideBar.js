@@ -29,8 +29,8 @@ function SideBar({ children }) {
         </Menu.Item>
       </Sidebar>
       <Sidebar.Pusher dimmed={visible}>
-        <Button icon onClick={() => setVisible(true)}>
-          <Icon name="world" /> 
+        <Button onClick={() => setVisible(true)}>
+          <Icon name="sidebar" />{" "}
         </Button>
         {children}
       </Sidebar.Pusher>

@@ -30,7 +30,7 @@ function SideBar({ children }) {
       </Sidebar>
       <Sidebar.Pusher dimmed={visible}>
         <Button onClick={() => setVisible(true)}>
-          <Icon name="sidebar" />{" "}
+          <Icon name="sidebar" color="blue" />{" "}
         </Button>
         {children}
       </Sidebar.Pusher>

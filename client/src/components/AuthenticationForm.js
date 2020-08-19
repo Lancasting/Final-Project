@@ -21,25 +21,31 @@ function AuthenticationForm({
       />
       <Form size="large" onSubmit={formSubmit}>
         <Segment stacked>
-          <Form.Input
-            onChange={formChange}
-            name="email"
-            fluid
-            icon="user"
-            iconPosition="left"
-            placeholder="Your E-mail address"
-            error={emailError}
-          />
-          <Form.Input
-            onChange={formChange}
-            name="password"
-            fluid
-            icon="lock"
-            iconPosition="left"
-            placeholder="Create Password"
-            type="password"
-            error={passwordError}
-          />
+          <label>
+            Email:
+            <Form.Input
+              onChange={formChange}
+              name="email"
+              fluid
+              icon="user"
+              iconPosition="left"
+              placeholder="Your E-mail address"
+              error={emailError}
+            />
+          </label>
+          <label>
+            Password:
+            <Form.Input
+              onChange={formChange}
+              name="password"
+              fluid
+              icon="lock"
+              iconPosition="left"
+              placeholder="Create Password"
+              type="password"
+              error={passwordError}
+            />
+          </label>
           <Button
             color="teal"
             fluid

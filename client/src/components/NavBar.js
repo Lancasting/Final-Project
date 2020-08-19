@@ -16,7 +16,7 @@ function Navbar({ loggedIn, setLoggedIn }) {
   return (
     <Container style={{ marginTop: "50px", marginBottom: "50px" }}>
       <Menu secondary>
-        <Image as={Link} to="/" src={logo} width={100} />
+        <Image as={Link} to="/" src={logo} width={100} alt="HALP Logo" />
         {loggedIn ? (
           <>
             <Menu.Item position="right">

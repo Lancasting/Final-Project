@@ -11,7 +11,14 @@ function AuthenticationForm({
 }) {
   return (
     <>
-      <Header as="h1" content="HALP Login" textAlign="center" />
+      <Header
+        as="h1"
+        content={
+          page === "login" ? "Login to your account" : "Sign-up for an account"
+        }
+        textAlign="center"
+        style={{ color: "white" }}
+      />
       <Form size="large" onSubmit={formSubmit}>
         <Segment stacked>
           <Form.Input

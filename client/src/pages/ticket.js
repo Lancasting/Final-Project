@@ -15,6 +15,7 @@ import {
   Icon,
 } from "semantic-ui-react";
 import { useParams, withRouter } from "react-router-dom";
+import { STATUS_OPTIONS, TYPE_OPTIONS, PRIORITY_OPTIONS } from "../utils/OptionVariables";
 
 const disabledInput = {
   pointerEvents: "none",
@@ -104,30 +105,6 @@ function Ticket({ userInfo, history }) {
         console.log(error);
       });
   };
-
-  const statusOptions = [
-    { key: 1, text: "New", value: "New" },
-    { key: 2, text: "In Progress", value: "In Progress" },
-    {
-      key: 3,
-      text: "Waiting for Customer",
-      value: "Waiting for Customer",
-    },
-    { key: 4, text: "Completed", value: "Completed" },
-  ];
-  const typeOptions = [
-    { key: 1, text: "Hardware", value: "Hardware" },
-    { key: 2, text: "Software", value: "Software" },
-    { key: 3, text: "Inquiry", value: "Inquiry" },
-    { key: 4, text: "Misc.", value: "Misc." },
-  ];
-  const priorityOptions = [
-    { key: 1, text: "1", value: 1 },
-    { key: 2, text: "2", value: 2 },
-    { key: 3, text: "3", value: 3 },
-    { key: 4, text: "4", value: 4 },
-    { key: 5, text: "5", value: 5 },
-  ];
 
   return (
     <div>
@@ -234,7 +211,7 @@ function Ticket({ userInfo, history }) {
                 <label>Type:</label>
                 <Dropdown
                   name="type"
-                  options={typeOptions}
+                  options={TYPE_OPTIONS}
                   placeholder={ticket.type}
                   selection
                   onChange={handleChange}
@@ -244,7 +221,7 @@ function Ticket({ userInfo, history }) {
                 <label>Priority Level:</label>
                 <Dropdown
                   name="priorityLevel"
-                  options={priorityOptions}
+                  options={PRIORITY_OPTIONS}
                   placeholder={`${ticket.priorityLevel}`}
                   selection
                   onChange={handleChange}
@@ -256,7 +233,7 @@ function Ticket({ userInfo, history }) {
                 <label>Status:</label>
                 <Dropdown
                   name="status"
-                  options={statusOptions}
+                  options={STATUS_OPTIONS}
                   placeholder={ticket.status}
                   selection
                   onChange={handleChange}

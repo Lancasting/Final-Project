@@ -28,7 +28,7 @@ function SideBar({ children }) {
           Projects
         </Menu.Item>
       </Sidebar>
-      <Sidebar.Pusher dimmed={visible}>
+      <Sidebar.Pusher dimmed={visible} color="blue">
         <Button onClick={() => setVisible(true)} size="tiny">
           <Icon name="sidebar" color="blue" />{" "}
         </Button>

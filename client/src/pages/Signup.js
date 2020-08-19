@@ -59,7 +59,6 @@ function Signup({ setLoggedin }) {
           marginLeft: "auto",
           height: "100%",
         }}
-        centered
         basic
       >
         <AuthenticationForm

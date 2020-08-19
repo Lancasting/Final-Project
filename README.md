@@ -25,7 +25,7 @@ Web application to create, view or update tickets in the Information Techonlogy 
 <image src="./websiteImage.png" />
 
 ## Deployed
-View [Deployed Application](website) hosted by Heroku
+View [Deployed Application](https://halp-me.herokuapp.com/) hosted by Heroku
 
 ## Software
 - [Visual Studio Code](https://code.visualstudio.com/)

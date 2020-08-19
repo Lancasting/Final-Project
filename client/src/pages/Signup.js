@@ -30,7 +30,7 @@ function Signup({ setLoggedin }) {
     if (
       userInformation.email &&
       userInformation.password &&
-      userInformation.password >= 6
+      userInformation.password.length >= 6
     ) {
       API.signup(userInformation)
         .then((results) => {

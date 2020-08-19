@@ -17,11 +17,11 @@ function Welcome() {
           content="Make work, work better"
           inverted
           style={{
-            fontSize: "7em",
+            fontSize: "65px",
             color: "#4d3ce5",
             fontWeight: "bold",
             marginBottom: 0,
-            marginTop: "1em",
+            marginTop: "2em",
           }}
         />
         <Header
@@ -30,8 +30,8 @@ function Welcome() {
           inverted
           style={{
             fontSize: "2em",
-            color: "blue",
-            fontWeight: "bold",
+            color: "white",
+            // fontWeight: "bold",
             marginTop: "1.5em",
           }}
         />
@@ -40,7 +40,7 @@ function Welcome() {
           <Icon name="right arrow" />
         </Button> */}
       </Container>
-      <Container textAlign="center">
+      {/* <Container textAlign="center">
         <Header
           as="h2"
           content="Execution is Doing Things Right!"
@@ -52,7 +52,7 @@ function Welcome() {
             marginTop: "2em",
           }}
         />
-      </Container>
+      </Container> */}
     </>
   );
 }

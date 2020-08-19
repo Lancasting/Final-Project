@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AuthenticationForm from "../components/AuthenticationForm.js";
 import API from "../utils/API.js";
 import { Helmet } from "react-helmet";
-import { Container } from "semantic-ui-react";
+import { Container, Segment } from "semantic-ui-react";
 import "./login.css";
 
 function Login({ setLoggedin }) {
@@ -50,7 +50,7 @@ function Login({ setLoggedin }) {
         <title>HALP - Login Page</title>
         <meta name="description" content="Login Page Of The HALP Website" />
       </Helmet>
-      <Container
+      <Segment
         style={{
           maxWidth: "600px",
           marginRight: "auto",
@@ -68,7 +68,7 @@ function Login({ setLoggedin }) {
           loggedInError={loggedInError}
           page="login"
         />
-      </Container>
+      </Segment>
     </>
   );
 }

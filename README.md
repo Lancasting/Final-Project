@@ -1,29 +1,35 @@
-# Create React Express App
+# HALP(Help, Am, Lost, Please)
 
-## About This Boilerplate
+## Table Of Contents
+1. 
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+## Software/Technologies Used
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Robo3T](https://robomongo.org/)
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+- [Node](https://nodejs.org/en/)
+- [Git Bash](https://gitforwindows.org/)
+- [Heroku](https://dashboard.heroku.com/)
+- [Slack](https://slack.com/)
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+## Technologies
+[![Using HTML](https://img.shields.io/badge/Using-HTML-orange)](https://www.w3schools.com/html/)
+[![Using CSS](https://img.shields.io/badge/Using-CSS-blue)](https://www.w3schools.com/css/)
+[![Using Javascript](https://img.shields.io/badge/Using-Javascript-yellow)](${https://www.javascript.com/})
+[![Using Node](https://img.shields.io/badge/Using-Node-brightgreen)](${https://nodejs.org/en/})
+[![Using Handlebars](https://img.shields.io/badge/Using-Handlebars-orange)](${https://nodejs.org/en/})
+[![Using Express](https://img.shields.io/badge/Using-Express-lightgreen)](${https://nodejs.org/en/})
 
-## Starting the app locally
+## Heroku 
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+## User-Story
+AS A IT specialist <br>
+I WANT TO to create/lookup/edit work <br>
+SO I CAN track what needs to be done <br>
 
-```
-npm install
-```
 
-This should install node modules within the server and the client folder.
-
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+## Contribute
+You may contribute by following the programmers on github.com!
+[Ikemous](https://github.com/ikemous)<br>
+[Lancasting](https://github.com/Lancasting)<br>
+[Robbie2497](https://github.com/Robbie2497)<br>

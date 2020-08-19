@@ -14,6 +14,11 @@ import {
   Message,
 } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
+import {
+  STATUS_OPTIONS,
+  TYPE_OPTIONS,
+  PRIORITY_OPTIONS,
+} from "../utils/OptionVariables.js";
 import Helmet from "react-helmet";
 import API from "../utils/API.js";
 
@@ -26,30 +31,6 @@ function Create({ userInfo, history }) {
   });
   const [errors, setErrors] = useState({});
   const [open, setOpen] = useState(false);
-
-  const statusOptions = [
-    { key: 1, text: "New", value: "New" },
-    { key: 2, text: "In Progress", value: "In Progress" },
-    {
-      key: 3,
-      text: "Waiting for Customer",
-      value: "Waiting for Customer",
-    },
-    { key: 4, text: "Completed", value: "Completed" },
-  ];
-  const typeOptions = [
-    { key: 1, text: "Hardware", value: "Hardware" },
-    { key: 2, text: "Software", value: "Software" },
-    { key: 3, text: "Inquiry", value: "Inquiry" },
-    { key: 4, text: "Misc.", value: "Misc." },
-  ];
-  const priorityOptions = [
-    { key: 1, text: "1 - High", value: 1 },
-    { key: 2, text: "2", value: 2 },
-    { key: 3, text: "3 - Moderate", value: 3 },
-    { key: 4, text: "4", value: 4 },
-    { key: 5, text: "5 - Low", value: 5 },
-  ];
 
   const handleSave = (event) => {
     event.preventDefault();
@@ -164,7 +145,7 @@ function Create({ userInfo, history }) {
                 <label>Type:</label>
                 <Dropdown
                   name="type"
-                  options={typeOptions}
+                  options={TYPE_OPTIONS}
                   placeholder="Hardware"
                   selection
                   onChange={handleChange}
@@ -174,7 +155,7 @@ function Create({ userInfo, history }) {
                 <label>Priority Level:</label>
                 <Dropdown
                   name="priorityLevel"
-                  options={priorityOptions}
+                  options={PRIORITY_OPTIONS}
                   placeholder="4"
                   selection
                   onChange={handleChange}
@@ -186,7 +167,7 @@ function Create({ userInfo, history }) {
                 <label>Status:</label>
                 <Dropdown
                   name="staus"
-                  options={statusOptions}
+                  options={STATUS_OPTIONS}
                   placeholder="New"
                   selection
                   onChange={handleChange}

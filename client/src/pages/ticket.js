@@ -74,8 +74,9 @@ function Ticket({ userInfo, history }) {
     console.log("Done");
     API.updateOne(ticket)
       .then(({ data }) => {
+        console.log(data);
         if (data.reason) {
-          setErrors({ assigneeError: "Please Enter Valid Assignee" });
+          return setErrors({ assigneeError: "Please Enter Valid Assignee" });
         }
         setErrors({});
         history.push("/tickets");

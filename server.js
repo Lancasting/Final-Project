@@ -13,7 +13,7 @@ const server = express(); //Server
 if (process.env.NODE_ENV === "production") {
   server.use(express.static("client/build"));
 }
-
+console.log(process.env.MONGODB_URI);
 //Connect To Database
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/ticketing_system",

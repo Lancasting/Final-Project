@@ -12,9 +12,10 @@ const options = [
 function TicketQueryForm({ setSelection, setUserInput, formSubmit }) {
   return (
     <Form onSubmit={formSubmit}>
-      <Form.Group style={{ margin: "0px", padding: "0" }}>
+      <Form.Group widths="equal" style={{ margin: "0px", padding: "0" }}>
         <Form.Field>
           <Dropdown
+            aria-label="querySelection"
             options={options}
             placeholder="Set Selection"
             selection
@@ -24,6 +25,7 @@ function TicketQueryForm({ setSelection, setUserInput, formSubmit }) {
         </Form.Field>
         <Form.Field>
           <Input
+            aria-label="search"
             name="search"
             action={{ icon: "search" }}
             placeholder="Search..."

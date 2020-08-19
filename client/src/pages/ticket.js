@@ -13,9 +13,14 @@ import {
   Modal,
   Header,
   Icon,
+  Confirm,
 } from "semantic-ui-react";
 import { useParams, withRouter } from "react-router-dom";
-import { STATUS_OPTIONS, TYPE_OPTIONS, PRIORITY_OPTIONS } from "../utils/OptionVariables";
+import {
+  STATUS_OPTIONS,
+  TYPE_OPTIONS,
+  PRIORITY_OPTIONS,
+} from "../utils/OptionVariables";
 
 const disabledInput = {
   pointerEvents: "none",
@@ -38,6 +43,7 @@ function Ticket({ userInfo, history }) {
   });
 
   const [open, setOpen] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
@@ -75,7 +81,6 @@ function Ticket({ userInfo, history }) {
     console.log("Done");
     API.updateOne(ticket)
       .then(({ data }) => {
-        console.log(data);
         if (data.reason) {
           return setErrors({ assigneeError: "Please Enter Valid Assignee" });
         }
@@ -94,7 +99,6 @@ function Ticket({ userInfo, history }) {
       };
     });
   };
-  // useEffect(() => console.log(ticket), [ticket]);
 
   const handleDelete = () => {
     API.deleteOne(ticket)
@@ -252,9 +256,16 @@ function Ticket({ userInfo, history }) {
               <Button onClick={handleSave} primary>
                 Save
               </Button>
-              <Button onClick={handleDelete} inverted color="red">
+              <Button onClick={() => setShowConfirm(true)} inverted color="red">
                 Delete
               </Button>
+              <Confirm
+                open={showConfirm}
+                cancelButton="Cancel"
+                confirmButton="Delete >:D"
+                onCancel={() => setShowConfirm(false)}
+                onConfirm={handleDelete}
+              />
             </Form.Group>
           </Form>
         </SideBar>

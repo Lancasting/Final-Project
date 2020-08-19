@@ -12,6 +12,7 @@ import {
   Header,
   Icon,
   Message,
+  Confirm,
 } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
 import {
@@ -31,6 +32,7 @@ function Create({ userInfo, history }) {
   });
   const [errors, setErrors] = useState({});
   const [open, setOpen] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const handleSave = (event) => {
     event.preventDefault();
@@ -193,7 +195,7 @@ function Create({ userInfo, history }) {
               <Button onClick={handleSave} primary>
                 Create
               </Button>
-              <Button
+              {/* <Button
                 onClick={() => {
                   history.push("/tickets");
                 }}
@@ -201,7 +203,17 @@ function Create({ userInfo, history }) {
                 color="red"
               >
                 Cancel
+              </Button> */}
+              <Button onClick={() => setShowConfirm(true)} inverted color="red">
+                Cancel
               </Button>
+              <Confirm
+                open={showConfirm}
+                cancelButton="Cancel"
+                confirmButton="Yes This Was A Mistake :("
+                onCancel={() => setShowConfirm(false)}
+                onConfirm={() => history.push("/tickets")}
+              />
             </Form.Group>
           </Form>
         </SideBar>

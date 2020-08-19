@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function TicketSummary({ _id, priorityLevel, type, status }) {
   return (
     <Segment style={{ color: "black", margin: "10px" }}>
-      <List>
+      <List role="list">
         <Grid>
           <Grid.Column mobile={16} tablet={8} computer={4}>
             <Header as="h3" content="Ticket:" />

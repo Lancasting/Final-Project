@@ -22,6 +22,7 @@ import {
 } from "../utils/OptionVariables.js";
 import Helmet from "react-helmet";
 import API from "../utils/API.js";
+import "./TicketQuery.css";
 
 function Create({ userInfo, history }) {
   const [ticket, setTicket] = useState({
@@ -72,7 +73,7 @@ function Create({ userInfo, history }) {
         <SideBar>
           <Form>
             <Form.Group widths="equal">
-              <Form.Field>
+              <Form.Field className="createcontainer">
                 <label>Created By:</label>
                 <Input
                   style={{ pointerEvents: "none" }}
@@ -80,7 +81,7 @@ function Create({ userInfo, history }) {
                   value={userInfo.email}
                 />
               </Form.Field>
-              <Form.Field>
+              <Form.Field className="createcontainer">
                 <label>Updated By:</label>
                 <Input
                   style={{ pointerEvents: "none" }}
@@ -90,14 +91,56 @@ function Create({ userInfo, history }) {
               </Form.Field>
             </Form.Group>
             <Form.Group widths="equal">
-              <Form.Field>
+              <Form.Field className="createcontainer">
                 <label>Assigned To:</label>
                 <UserSearchInput
                   assigneeError={errors.assignedTo}
                   setTicket={setTicket}
                 />
               </Form.Field>
-              <Form.Field>
+              <Form.Field className="createcontainer">
+                <label>Status:</label>
+                <Dropdown
+                  name="staus"
+                  options={STATUS_OPTIONS}
+                  placeholder="New"
+                  selection
+                  onChange={handleChange}
+                />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field className="createcontainer">
+                <label>Type:</label>
+                <Dropdown
+                  name="type"
+                  options={TYPE_OPTIONS}
+                  placeholder="Hardware"
+                  selection
+                  onChange={handleChange}
+                />
+              </Form.Field>
+              <Form.Field className="createcontainer">
+                <label>Priority Level:</label>
+                <Dropdown
+                  name="priorityLevel"
+                  options={PRIORITY_OPTIONS}
+                  placeholder="5"
+                  selection
+                  onChange={handleChange}
+                />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field className="createcontainer">
+                <label>Subject:</label>
+                <Input
+                  name="subject"
+                  placeholder="Technical Support"
+                  onChange={handleChange}
+                />
+              </Form.Field>
+              <Form.Field className="createcontainer">
                 <label>Description:</label>
                 <Modal
                   closeIcon
@@ -140,48 +183,6 @@ function Create({ userInfo, history }) {
                     </Button>
                   </Modal.Actions>
                 </Modal>
-              </Form.Field>
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Field>
-                <label>Type:</label>
-                <Dropdown
-                  name="type"
-                  options={TYPE_OPTIONS}
-                  placeholder="Hardware"
-                  selection
-                  onChange={handleChange}
-                />
-              </Form.Field>
-              <Form.Field>
-                <label>Priority Level:</label>
-                <Dropdown
-                  name="priorityLevel"
-                  options={PRIORITY_OPTIONS}
-                  placeholder="4"
-                  selection
-                  onChange={handleChange}
-                />
-              </Form.Field>
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Field>
-                <label>Status:</label>
-                <Dropdown
-                  name="staus"
-                  options={STATUS_OPTIONS}
-                  placeholder="New"
-                  selection
-                  onChange={handleChange}
-                />
-              </Form.Field>
-              <Form.Field>
-                <label>Subject:</label>
-                <Input
-                  name="subject"
-                  placeholder="Technical Support"
-                  onChange={handleChange}
-                />
               </Form.Field>
             </Form.Group>
             <Form.Group widths="equal">

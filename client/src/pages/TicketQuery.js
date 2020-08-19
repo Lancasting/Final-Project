@@ -5,6 +5,7 @@ import TicketQueryForm from "../components/TicketQueryForm.js";
 import TicketSummary from "../components/TicketSummary.js";
 import { Helmet } from "react-helmet";
 import { Container, Segment } from "semantic-ui-react";
+import "./TicketQuery.css";
 
 function TicketQuery() {
   // state of query
@@ -39,7 +40,7 @@ function TicketQuery() {
         <title>HALP - Ticket Page</title>
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
-      <Container as={Segment}>
+      <Container className="ticketquery" as={Segment}>
         <SideBar>
           <TicketQueryForm
             current={selection}

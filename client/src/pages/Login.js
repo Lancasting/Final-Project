@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AuthenticationForm from "../components/AuthenticationForm.js";
 import API from "../utils/API.js";
 import { Helmet } from "react-helmet";
-import { Container, Segment } from "semantic-ui-react";
+import { Segment } from "semantic-ui-react";
 import "./login.css";
 
 function Login({ setLoggedin }) {

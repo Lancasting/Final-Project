@@ -23,6 +23,7 @@ function AuthenticationForm({
         <Segment stacked>
           <Form.Input
             onChange={formChange}
+            aria-label="email"
             name="email"
             fluid
             icon="user"
@@ -32,6 +33,7 @@ function AuthenticationForm({
           />
           <Form.Input
             onChange={formChange}
+            aria-label="password"
             name="password"
             fluid
             icon="lock"

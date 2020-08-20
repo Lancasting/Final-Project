@@ -162,7 +162,7 @@ function Ticket({ userInfo, history }) {
             </Form.Group>
             <Form.Group widths="equal">
               <Form.Field className="createcontainer">
-                <label>assigned To:</label>
+                <label>Assigned To:</label>
                 <UserSearchInput
                   assigneeError={errors.assigneeError}
                   placeholder={ticket.assignedTo.email}

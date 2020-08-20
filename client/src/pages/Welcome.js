@@ -26,8 +26,8 @@ function Welcome() {
             content="Make work, work better"
             inverted
             style={{
-              fontSize: "65px",
-              color: "#4d3ce5",
+              fontSize: "75px",
+              color: "white",
               fontWeight: "bold",
               marginBottom: 0,
               // marginTop: "2em",

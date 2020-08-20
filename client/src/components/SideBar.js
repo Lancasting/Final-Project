@@ -6,9 +6,8 @@ function SideBar({ children }) {
   const [visible, setVisible] = useState(false);
 
   return (
-    <Sidebar.Pushable style={{ overflow: "visible" }}>
+    <Sidebar.Pushable>
       <Sidebar
-        style={{ overflow: "visible" }}
         as={Menu}
         animation="overlay"
         icon="labeled"
@@ -29,17 +28,14 @@ function SideBar({ children }) {
           Projects
         </Menu.Item>
       </Sidebar>
-      <Sidebar.Pusher
-        dimmed={visible}
-        color="blue"
-        style={{ overflow: "visible" }}
-      >
+      <Sidebar.Pusher dimmed={visible} color="blue" style={{ height: "100%" }}>
         <Button
           name="sidebarButton"
           onClick={() => setVisible(true)}
           size="tiny"
+          style={{ marginLeft: "0" }}
         >
-          <Icon name="sidebar" color="blue" />{" "}
+          <Icon name="sidebar" color="blue" />
         </Button>
         {children}
       </Sidebar.Pusher>

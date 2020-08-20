@@ -125,7 +125,7 @@ function Ticket({ userInfo, history }) {
           />
           <Form>
             <Form.Group widths="equal">
-              <Form.Field>
+              <Form.Field className="createcontainer">
                 <label>Created Date</label>
                 <Input
                   style={disabledInput}
@@ -133,7 +133,7 @@ function Ticket({ userInfo, history }) {
                   value={ticket.createdDate}
                 />
               </Form.Field>
-              <Form.Field>
+              <Form.Field className="createcontainer">
                 <label>Updated Date</label>
                 <Input
                   style={disabledInput}
@@ -143,7 +143,7 @@ function Ticket({ userInfo, history }) {
               </Form.Field>
             </Form.Group>
             <Form.Group widths="equal">
-              <Form.Field>
+              <Form.Field className="createcontainer">
                 <label>Created By:</label>
                 <Input
                   style={disabledInput}
@@ -151,7 +151,7 @@ function Ticket({ userInfo, history }) {
                   value={ticket.createdBy.email}
                 />
               </Form.Field>
-              <Form.Field>
+              <Form.Field className="createcontainer">
                 <label>Updated By:</label>
                 <Input
                   style={disabledInput}
@@ -161,7 +161,7 @@ function Ticket({ userInfo, history }) {
               </Form.Field>
             </Form.Group>
             <Form.Group widths="equal">
-              <Form.Field>
+              <Form.Field className="createcontainer">
                 <label>assigned To:</label>
                 <UserSearchInput
                   assigneeError={errors.assigneeError}
@@ -169,7 +169,49 @@ function Ticket({ userInfo, history }) {
                   setTicket={setTicket}
                 />
               </Form.Field>
-              <Form.Field>
+              <Form.Field className="createcontainer">
+                <label>Status:</label>
+                <Dropdown
+                  name="status"
+                  options={STATUS_OPTIONS}
+                  placeholder={ticket.status}
+                  selection
+                  onChange={handleChange}
+                />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field className="createcontainer">
+                <label>Type:</label>
+                <Dropdown
+                  name="type"
+                  options={TYPE_OPTIONS}
+                  placeholder={ticket.type}
+                  selection
+                  onChange={handleChange}
+                />
+              </Form.Field>
+              <Form.Field className="createcontainer">
+                <label>Priority Level:</label>
+                <Dropdown
+                  name="priorityLevel"
+                  options={PRIORITY_OPTIONS}
+                  placeholder={`${ticket.priorityLevel}`}
+                  selection
+                  onChange={handleChange}
+                />
+              </Form.Field>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field className="createcontainer">
+                <label>Subject:</label>
+                <Input
+                  name="subject"
+                  placeholder={ticket.subject}
+                  onChange={handleChange}
+                />
+              </Form.Field>
+              <Form.Field className="createcontainer">
                 <label>Description:</label>
                 <Modal
                   closeIcon
@@ -208,48 +250,6 @@ function Ticket({ userInfo, history }) {
                     </Button>
                   </Modal.Actions>
                 </Modal>
-              </Form.Field>
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Field>
-                <label>Type:</label>
-                <Dropdown
-                  name="type"
-                  options={TYPE_OPTIONS}
-                  placeholder={ticket.type}
-                  selection
-                  onChange={handleChange}
-                />
-              </Form.Field>
-              <Form.Field>
-                <label>Priority Level:</label>
-                <Dropdown
-                  name="priorityLevel"
-                  options={PRIORITY_OPTIONS}
-                  placeholder={`${ticket.priorityLevel}`}
-                  selection
-                  onChange={handleChange}
-                />
-              </Form.Field>
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Field>
-                <label>Status:</label>
-                <Dropdown
-                  name="status"
-                  options={STATUS_OPTIONS}
-                  placeholder={ticket.status}
-                  selection
-                  onChange={handleChange}
-                />
-              </Form.Field>
-              <Form.Field>
-                <label>Subject:</label>
-                <Input
-                  name="subject"
-                  placeholder={ticket.subject}
-                  onChange={handleChange}
-                />
               </Form.Field>
             </Form.Group>
             <Form.Group>

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Sidebar, Menu, Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import "./sidebar.css";
 
 function SideBar({ children }) {
   const [visible, setVisible] = useState(false);
 
   return (
-    <Sidebar.Pushable>
+    <Sidebar.Pushable className="sidebarquery">
       <Sidebar
         as={Menu}
         animation="overlay"
@@ -28,7 +29,7 @@ function SideBar({ children }) {
           Projects
         </Menu.Item>
       </Sidebar>
-      <Sidebar.Pusher dimmed={visible} color="blue">
+      <Sidebar.Pusher dimmed={visible} className="pusherbar">
         <Button
           name="sidebarButton"
           onClick={() => setVisible(true)}

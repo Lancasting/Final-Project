@@ -25,7 +25,7 @@ Web application to create, view or update tickets in the Information Techonlogy 
 <image src="./websiteImage.png" />
 
 ## Deployed
-View [Deployed Application](website) hosted by Heroku
+View [Deployed Application](https://halp-me.herokuapp.com/) hosted by Heroku
 
 ## Software
 - [Visual Studio Code](https://code.visualstudio.com/)
@@ -51,28 +51,21 @@ You may contribute by following the programmers on github.com!<br>
 
 <div style="display: inline-block;"> 
 
-[<h2>Ikemous</h2>](Ikemous)</br>
+[<h2>Ikemous</h2>](https://github.com/ikemous)</br>
 <image src="https://github-readme-stats.codestackr.vercel.app/api?username=ikemous&show_icons=true&theme=radical" /><br>
 
 </div>
 <div style="display: inline-block;"> 
 
-[<h2>Lancasting</h2>](Lancasting)</br>
+[<h2>Lancasting</h2>](https://github.com/Lancasting)</br>
 <image src="https://github-readme-stats.codestackr.vercel.app/api?username=Lancasting&show_icons=true&theme=radical" /><br>
 
 </div>
 <div style="display: inline-block;"> 
 
-[<h2>MartinMartinez83</h2>](MartinMartinez83)</br>
+[<h2>MartinMartinez83</h2>](https://github.com/MartinMartinez83)</br>
 <image src="https://github-readme-stats.codestackr.vercel.app/api?username=MartinMartinez83&show_icons=true&theme=radical" /><br>
 
 </div>
 
 </div>
-
-<!-- Variables to be used throughout the readme -->
-[website]: https://codeSTACKr.com
-[repo]: https://github.com/Lancasting/Final-Project
-[Ikemous]: https://github.com/ikemous
-[Lancasting]: https://github.com/Lancasting
-[MartinMartinez83]: https://github.com/MartinMartinez83

@@ -4,7 +4,7 @@ import SideBar from "../components/SideBar.js";
 import TicketQueryForm from "../components/TicketQueryForm.js";
 import TicketSummary from "../components/TicketSummary.js";
 import { Helmet } from "react-helmet";
-import { Container, Segment } from "semantic-ui-react";
+import { Grid, Segment } from "semantic-ui-react";
 import "./TicketQuery.css";
 
 function TicketQuery() {
@@ -40,7 +40,39 @@ function TicketQuery() {
         <title>HALP - Ticket Page</title>
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
-      <Container className="ticketquery" as={Segment}>
+      <Grid.Column
+        style={{ minHeight: "90vh", width: "100%", position: "relative" }}
+      >
+        <Segment
+          placeholder
+          textAlign="center"
+          style={{
+            height: "100%",
+            maxWidth: "100%",
+            marginRight: "auto",
+            marginLeft: "auto",
+          }}
+        >
+          <SideBar>
+            <TicketQueryForm
+              current={selection}
+              setSelection={setSelection}
+              setUserInput={setUserInput}
+              formSubmit={formSubmit}
+            />
+            {tickets.length === 0 ? (
+              <h1>No Tickets Found</h1>
+            ) : (
+              <Segment basic>
+                {tickets.map((ticket) => (
+                  <TicketSummary key={ticket._id} {...ticket} />
+                ))}
+              </Segment>
+            )}
+          </SideBar>
+        </Segment>
+      </Grid.Column>
+      {/* <Container className="ticketquery" as={Segment}>
         <SideBar>
           <TicketQueryForm
             current={selection}
@@ -58,7 +90,7 @@ function TicketQuery() {
             </Segment>
           )}
         </SideBar>
-      </Container>
+      </Container> */}
     </>
   );
 }

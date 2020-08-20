@@ -1,3 +1,7 @@
-/* #root {
+#root {
   height: 100%;
-} */
+}
+
+.field { 
+  max-width: 100%!important;
+}

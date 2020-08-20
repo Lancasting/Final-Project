@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AuthenticationForm from "../components/AuthenticationForm.js";
 import { Helmet } from "react-helmet";
-import { Segment } from "semantic-ui-react";
+import { Segment, Grid } from "semantic-ui-react";
 import API from "../utils/API.js";
 import "./login.css";
 
@@ -52,23 +52,29 @@ function Signup({ setLoggedin }) {
         <title>HALP - Login Page</title>
         <meta name="description" content="Login Page Of The HALP Website" />
       </Helmet>
-      <Segment
-        style={{
-          maxWidth: "600px",
-          marginRight: "auto",
-          marginLeft: "auto",
-          height: "100%",
-        }}
-        basic
+      <Grid.Column
+        style={{ height: "90vh", width: "100%", position: "relative" }}
       >
-        <AuthenticationForm
-          formChange={formChange}
-          formSubmit={formSubmit}
-          emailError={emailError}
-          passwordError={passwordError}
-          loggedInError={loggedInError}
-        />
-      </Segment>
+        <Segment
+          placeholder
+          basic
+          textAlign="center"
+          style={{
+            height: "100%",
+            maxWidth: "750px",
+            marginRight: "auto",
+            marginLeft: "auto",
+          }}
+        >
+          <AuthenticationForm
+            formChange={formChange}
+            formSubmit={formSubmit}
+            emailError={emailError}
+            passwordError={passwordError}
+            loggedInError={loggedInError}
+          />
+        </Segment>
+      </Grid.Column>
     </>
   );
 }

@@ -19,13 +19,12 @@ function AuthenticationForm({
         textAlign="center"
         style={{ color: "white" }}
       />
-      <Form size="large" onSubmit={formSubmit}>
-        <Segment stacked>
+      <Segment>
+        <Form size="large" onSubmit={formSubmit}>
           <Form.Input
             onChange={formChange}
             aria-label="email"
             name="email"
-            fluid
             icon="user"
             iconPosition="left"
             placeholder="Your E-mail address"
@@ -35,7 +34,6 @@ function AuthenticationForm({
             onChange={formChange}
             aria-label="password"
             name="password"
-            fluid
             icon="lock"
             iconPosition="left"
             placeholder="Create Password"
@@ -64,8 +62,8 @@ function AuthenticationForm({
               content="password must be over 6 characters. Email Could Already be used"
             />
           )}
-        </Segment>
-      </Form>
+        </Form>
+      </Segment>
     </>
   );
 }

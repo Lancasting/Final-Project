@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../components/logo.png";
 import API from "../utils/API.js";
 import { Link } from "react-router-dom";
-import { Menu, Image, Button, Container } from "semantic-ui-react";
+import { Menu, Image, Button, Grid } from "semantic-ui-react";
 
 function Navbar({ loggedIn, setLoggedIn }) {
   const signout = () => {
@@ -14,9 +14,15 @@ function Navbar({ loggedIn, setLoggedIn }) {
   };
 
   return (
-    <Container style={{ marginTop: "50px", marginBottom: "50px" }}>
-      <Menu secondary>
-        <Image as={Link} to="/" src={logo} width={100} alt="HALP Logo" />
+    <Grid.Row>
+      {" "}
+      <Menu
+        secondary
+        style={{ width: "100%", marginLeft: "10px", marginRight: "10px" }}
+      >
+        <Menu.Item>
+          <Image as={Link} to="/" src={logo} width={100} alt="HALP Logo" />
+        </Menu.Item>
         {loggedIn ? (
           <>
             <Menu.Item position="right">
@@ -45,7 +51,7 @@ function Navbar({ loggedIn, setLoggedIn }) {
           </>
         )}
       </Menu>
-    </Container>
+    </Grid.Row>
   );
 }
 

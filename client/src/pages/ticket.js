@@ -14,6 +14,7 @@ import {
   Header,
   Icon,
   Confirm,
+  Grid,
 } from "semantic-ui-react";
 import { useParams, withRouter } from "react-router-dom";
 import {
@@ -111,166 +112,174 @@ function Ticket({ userInfo, history }) {
   };
 
   return (
-    <div>
+    <>
       <Helmet>
         <title>HALP - Modify Ticket</title>
         <meta name="description" content="Ticket Page Of The HALP Website" />
       </Helmet>
-      <Container as={Segment}>
-        <SideBar>
-          <Header
-            as="h1"
-            content={`Ticket: ${ticket._id}`}
-            textAlign="center"
-          />
-          <Form>
-            <Form.Group widths="equal">
-              <Form.Field className="createcontainer">
-                <label>Created Date</label>
-                <Input
-                  style={disabledInput}
-                  name="_id"
-                  value={ticket.createdDate}
-                />
-              </Form.Field>
-              <Form.Field className="createcontainer">
-                <label>Updated Date</label>
-                <Input
-                  style={disabledInput}
-                  name="_id"
-                  value={ticket.updatedDate}
-                />
-              </Form.Field>
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Field className="createcontainer">
-                <label>Created By:</label>
-                <Input
-                  style={disabledInput}
-                  name="createdBy"
-                  value={ticket.createdBy.email}
-                />
-              </Form.Field>
-              <Form.Field className="createcontainer">
-                <label>Updated By:</label>
-                <Input
-                  style={disabledInput}
-                  name="updatedBy"
-                  value={prevUpdater}
-                />
-              </Form.Field>
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Field className="createcontainer">
-                <label>Assigned To:</label>
-                <UserSearchInput
-                  assigneeError={errors.assigneeError}
-                  placeholder={ticket.assignedTo.email}
-                  setTicket={setTicket}
-                />
-              </Form.Field>
-              <Form.Field className="createcontainer">
-                <label>Status:</label>
-                <Dropdown
-                  name="status"
-                  options={STATUS_OPTIONS}
-                  placeholder={ticket.status}
-                  selection
-                  onChange={handleChange}
-                />
-              </Form.Field>
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Field className="createcontainer">
-                <label>Type:</label>
-                <Dropdown
-                  name="type"
-                  options={TYPE_OPTIONS}
-                  placeholder={ticket.type}
-                  selection
-                  onChange={handleChange}
-                />
-              </Form.Field>
-              <Form.Field className="createcontainer">
-                <label>Priority Level:</label>
-                <Dropdown
-                  name="priorityLevel"
-                  options={PRIORITY_OPTIONS}
-                  placeholder={`${ticket.priorityLevel}`}
-                  selection
-                  onChange={handleChange}
-                />
-              </Form.Field>
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Field className="createcontainer">
-                <label>Subject:</label>
-                <Input
-                  name="subject"
-                  placeholder={ticket.subject}
-                  onChange={handleChange}
-                />
-              </Form.Field>
-              <Form.Field className="createcontainer">
-                <label>Description:</label>
-                <Modal
-                  closeIcon
-                  open={open}
-                  trigger={
-                    <Button color={errors.description ? "red" : "grey"}>
-                      Edit
-                    </Button>
-                  }
-                  onClose={() => setOpen(false)}
-                  onOpen={() => setOpen(true)}
-                >
-                  <Header
-                    icon="archive"
-                    content="Type Description Of Problem"
+      <Grid.Column
+        style={{ height: "90vh", width: "100%", position: "relative" }}
+      >
+        <Container as={Segment}>
+          <SideBar>
+            <Header
+              as="h1"
+              content={`Ticket: ${ticket._id}`}
+              textAlign="center"
+            />
+            <Form>
+              <Form.Group widths="equal">
+                <Form.Field className="createcontainer">
+                  <label>Created Date</label>
+                  <Input
+                    style={disabledInput}
+                    name="_id"
+                    value={ticket.createdDate}
                   />
-                  <Modal.Content>
-                    <Form.TextArea
-                      error={
-                        errors.description
-                          ? { content: errors.description, color: "red" }
-                          : false
-                      }
-                      style={{ height: "100%", width: "100%" }}
-                      name="description"
-                      onChange={handleChange}
-                      placeholder={ticket.description}
+                </Form.Field>
+                <Form.Field className="createcontainer">
+                  <label>Updated Date</label>
+                  <Input
+                    style={disabledInput}
+                    name="_id"
+                    value={ticket.updatedDate}
+                  />
+                </Form.Field>
+              </Form.Group>
+              <Form.Group widths="equal">
+                <Form.Field className="createcontainer">
+                  <label>Created By:</label>
+                  <Input
+                    style={disabledInput}
+                    name="createdBy"
+                    value={ticket.createdBy.email}
+                  />
+                </Form.Field>
+                <Form.Field className="createcontainer">
+                  <label>Updated By:</label>
+                  <Input
+                    style={disabledInput}
+                    name="updatedBy"
+                    value={prevUpdater}
+                  />
+                </Form.Field>
+              </Form.Group>
+              <Form.Group widths="equal">
+                <Form.Field className="createcontainer">
+                  <label>Assigned To:</label>
+                  <UserSearchInput
+                    assigneeError={errors.assigneeError}
+                    placeholder={ticket.assignedTo.email}
+                    setTicket={setTicket}
+                  />
+                </Form.Field>
+                <Form.Field className="createcontainer">
+                  <label>Status:</label>
+                  <Dropdown
+                    name="status"
+                    options={STATUS_OPTIONS}
+                    placeholder={ticket.status}
+                    selection
+                    onChange={handleChange}
+                  />
+                </Form.Field>
+              </Form.Group>
+              <Form.Group widths="equal">
+                <Form.Field className="createcontainer">
+                  <label>Type:</label>
+                  <Dropdown
+                    name="type"
+                    options={TYPE_OPTIONS}
+                    placeholder={ticket.type}
+                    selection
+                    onChange={handleChange}
+                  />
+                </Form.Field>
+                <Form.Field className="createcontainer">
+                  <label>Priority Level:</label>
+                  <Dropdown
+                    name="priorityLevel"
+                    options={PRIORITY_OPTIONS}
+                    placeholder={`${ticket.priorityLevel}`}
+                    selection
+                    onChange={handleChange}
+                  />
+                </Form.Field>
+              </Form.Group>
+              <Form.Group widths="equal">
+                <Form.Field className="createcontainer">
+                  <label>Subject:</label>
+                  <Input
+                    name="subject"
+                    placeholder={ticket.subject}
+                    onChange={handleChange}
+                  />
+                </Form.Field>
+                <Form.Field className="createcontainer">
+                  <label>Description:</label>
+                  <Modal
+                    closeIcon
+                    open={open}
+                    trigger={
+                      <Button color={errors.description ? "red" : "grey"}>
+                        Edit
+                      </Button>
+                    }
+                    onClose={() => setOpen(false)}
+                    onOpen={() => setOpen(true)}
+                  >
+                    <Header
+                      icon="archive"
+                      content="Type Description Of Problem"
                     />
-                  </Modal.Content>
-                  <Modal.Actions>
-                    <Button color="red" onClick={() => setOpen(false)}>
-                      <Icon name="remove" /> Cancel
-                    </Button>
-                    <Button color="green" onClick={() => setOpen(false)}>
-                      <Icon name="checkmark" /> Save
-                    </Button>
-                  </Modal.Actions>
-                </Modal>
-              </Form.Field>
-            </Form.Group>
-            <Form.Group>
-              <Button onClick={handleSave} primary>
-                Save
-              </Button>
-              <Button onClick={() => setShowConfirm(true)} inverted color="red">
-                Delete
-              </Button>
-              <Confirm
-                open={showConfirm}
-                cancelButton="Cancel"
-                confirmButton="Delete >:D"
-                onCancel={() => setShowConfirm(false)}
-                onConfirm={handleDelete}
-              />
-            </Form.Group>
-          </Form>
-        </SideBar>
-      </Container>
-    </div>
+                    <Modal.Content>
+                      <Form.TextArea
+                        error={
+                          errors.description
+                            ? { content: errors.description, color: "red" }
+                            : false
+                        }
+                        style={{ height: "100%", width: "100%" }}
+                        name="description"
+                        onChange={handleChange}
+                        placeholder={ticket.description}
+                      />
+                    </Modal.Content>
+                    <Modal.Actions>
+                      <Button color="red" onClick={() => setOpen(false)}>
+                        <Icon name="remove" /> Cancel
+                      </Button>
+                      <Button color="green" onClick={() => setOpen(false)}>
+                        <Icon name="checkmark" /> Save
+                      </Button>
+                    </Modal.Actions>
+                  </Modal>
+                </Form.Field>
+              </Form.Group>
+              <Form.Group>
+                <Button onClick={handleSave} primary>
+                  Save
+                </Button>
+                <Button
+                  onClick={() => setShowConfirm(true)}
+                  inverted
+                  color="red"
+                >
+                  Delete
+                </Button>
+                <Confirm
+                  open={showConfirm}
+                  cancelButton="Cancel"
+                  confirmButton="Delete >:D"
+                  onCancel={() => setShowConfirm(false)}
+                  onConfirm={handleDelete}
+                />
+              </Form.Group>
+            </Form>
+          </SideBar>
+        </Container>
+      </Grid.Column>
+    </>
   );
 }
 

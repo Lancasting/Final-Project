@@ -270,7 +270,7 @@ function Ticket({ userInfo, history }) {
                 <Confirm
                   open={showConfirm}
                   cancelButton="Cancel"
-                  confirmButton="Delete >:D"
+                  confirmButton="Delete"
                   onCancel={() => setShowConfirm(false)}
                   onConfirm={handleDelete}
                 />

@@ -209,7 +209,7 @@ function Create({ userInfo, history }) {
                 <Confirm
                   open={showConfirm}
                   cancelButton="No!"
-                  confirmButton="Yes This Was A Mistake :("
+                  confirmButton="Yes This Was A Mistake"
                   onCancel={() => setShowConfirm(false)}
                   onConfirm={() => history.push("/tickets")}
                 />

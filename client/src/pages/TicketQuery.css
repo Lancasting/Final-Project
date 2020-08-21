@@ -5,3 +5,7 @@
 .createcontainer{
     padding: 15px;
 }
+
+.pusherbar{
+    max-height: 500px;
+}

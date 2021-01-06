@@ -5,7 +5,7 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "@artsy/fresnel": "^1.2.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-helmet": "^6.1.0",
